@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import type {
   Invoice,
   SupportTicket,
@@ -368,6 +368,14 @@ export function AdminDashboard({
       setIsRefreshing(false);
     }
   };
+
+  // Background live poll every 20 seconds to sync online/offline presence & status logs
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRefreshAll();
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Overview metrics calculation
   const metrics = useMemo(() => {

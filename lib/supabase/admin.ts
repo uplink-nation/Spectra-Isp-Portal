@@ -155,22 +155,10 @@ export async function getAllDbCustomers(): Promise<DbCustomerWithStats[]> {
     console.warn("Could not aggregate speed tests:", speedErr);
   }
 
-  // 5. Fetch presence status by customer from persistent store and Supabase
+  // 5. Fetch live presence status by customer directly from Supabase (authoritative source of truth)
   const presenceByCustomerId = new Map<string, { is_online: boolean; last_status_change_at?: string; status: CustomerOnlineStatus }>();
 
-  // a. Load from shared presence store
-  const persistentPresenceMap = getPresenceMap();
-  for (const [, val] of Object.entries(persistentPresenceMap)) {
-    if (val.customer_id) {
-      presenceByCustomerId.set(val.customer_id, {
-        is_online: val.is_online,
-        last_status_change_at: val.last_status_change_at,
-        status: val.status,
-      });
-    }
-  }
-
-  // b. Merge from Supabase if table exists
+  // a. Load authoritative latest status from Supabase customer_status_logs table
   try {
     const { data: statusRows } = await supabase
       .from("customer_status_logs")
@@ -184,7 +172,7 @@ export async function getAllDbCustomers(): Promise<DbCustomerWithStats[]> {
           presenceByCustomerId.set(custId, {
             is_online: row.status === "ONLINE",
             last_status_change_at: (row.event_time as string) || undefined,
-            status: row.status as CustomerOnlineStatus,
+            status: (row.status as CustomerOnlineStatus) || (row.status === "ONLINE" ? "ONLINE" : "OFFLINE"),
           });
         }
       }
@@ -193,11 +181,26 @@ export async function getAllDbCustomers(): Promise<DbCustomerWithStats[]> {
     console.warn("Could not query customer_status_logs:", statusErr);
   }
 
-  // Merge in-memory presence map
-  const inMemoryMap = globalThis.__spectra_presence_map || {};
-  for (const [custId, val] of Object.entries(inMemoryMap)) {
-    if (!presenceByCustomerId.has(custId)) {
-      presenceByCustomerId.set(custId, val);
+  // b. Check customers table is_online column for any customer not found in logs
+  for (const c of dbCustomers) {
+    if (!presenceByCustomerId.has(c.id) && typeof c.is_online === "boolean") {
+      presenceByCustomerId.set(c.id, {
+        is_online: c.is_online,
+        last_status_change_at: c.last_status_change_at || undefined,
+        status: c.is_online ? "ONLINE" : "OFFLINE",
+      });
+    }
+  }
+
+  // c. Fallback to shared presence store only if no database records exist
+  const persistentPresenceMap = getPresenceMap();
+  for (const [, val] of Object.entries(persistentPresenceMap)) {
+    if (val.customer_id && !presenceByCustomerId.has(val.customer_id)) {
+      presenceByCustomerId.set(val.customer_id, {
+        is_online: val.is_online,
+        last_status_change_at: val.last_status_change_at,
+        status: val.status,
+      });
     }
   }
 
@@ -208,7 +211,7 @@ export async function getAllDbCustomers(): Promise<DbCustomerWithStats[]> {
     const latestSpeed = latestSpeedTestByCustomerId.get(c.id);
     const presence = presenceByCustomerId.get(c.id);
 
-    const isOnline = presence ? presence.is_online : (c.is_online ?? false);
+    const isOnline = presence !== undefined ? presence.is_online : (c.is_online ?? false);
     const lastStatusChange = presence?.last_status_change_at || c.last_status_change_at;
     const plan = getCustomerPlan(c.id, c.pppoe_username, {
       plan_id: c.plan_id,
