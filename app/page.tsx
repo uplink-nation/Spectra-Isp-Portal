@@ -232,28 +232,31 @@ export default async function Home() {
   // CUSTOMER
   // ==================================================
 
-  const {
-    data: customer,
-    error: customerError,
-  } =
-    await supabase
+  let customer: Customer | null = null;
+  let customerError: DatabaseError | null = null;
+
+  const initialCustQuery = await supabase
+    .from("customers")
+    .select(
+      "id, name, pppoe_username, plan_id, plan_name, plan_speed_mbps, plan_upload_mbps, plan_price_inr, plan_data_limit_gb, plan_renewal_date, is_online, last_status_change_at"
+    )
+    .eq("auth_user_id", user.id)
+    .maybeSingle<Customer>();
+
+  if (initialCustQuery.error) {
+    // If extended columns don't exist yet in Supabase, fallback to base columns
+    const fallbackCustQuery = await supabase
       .from("customers")
-      .select(
-        "id, name, pppoe_username, plan_id, plan_name, plan_speed_mbps, plan_upload_mbps, plan_price_inr, plan_data_limit_gb, plan_renewal_date, is_online, last_status_change_at"
-      )
-      .eq(
-        "auth_user_id",
-        user.id
-      )
+      .select("id, name, pppoe_username")
+      .eq("auth_user_id", user.id)
       .maybeSingle<Customer>();
 
-
-  if (customerError) {
-    return (
-      <DatabaseErrorScreen
-        error={customerError}
-      />
-    );
+    if (fallbackCustQuery.error) {
+      return <DatabaseErrorScreen error={fallbackCustQuery.error} />;
+    }
+    customer = fallbackCustQuery.data;
+  } else {
+    customer = initialCustQuery.data;
   }
 
   // Get real-time connection presence status for this subscriber
