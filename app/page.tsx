@@ -259,15 +259,37 @@ export default async function Home() {
     customer = initialCustQuery.data;
   }
 
-  // Get real-time connection presence status for this subscriber
+  // Get real-time connection presence status for this subscriber from Supabase & presence store
+  let dbStatusIsOnline: boolean | undefined = customer?.is_online ?? undefined;
+  let dbLastStatusChangeAt: string | undefined = customer?.last_status_change_at ?? undefined;
+
+  if (customer) {
+    try {
+      const { data: latestLog } = await supabase
+        .from("customer_status_logs")
+        .select("status, event_time")
+        .eq("customer_id", customer.id)
+        .order("event_time", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (latestLog) {
+        dbStatusIsOnline = latestLog.status === "ONLINE";
+        dbLastStatusChangeAt = (latestLog.event_time as string) || dbLastStatusChangeAt;
+      }
+    } catch {
+      // Ignore if table not yet created
+    }
+  }
+
   const presence = customer
     ? getCustomerPresence(customer.id, customer.pppoe_username, {
-        is_online: customer.is_online ?? undefined,
-        last_status_change_at: customer.last_status_change_at ?? undefined,
+        is_online: dbStatusIsOnline,
+        last_status_change_at: dbLastStatusChangeAt,
       })
     : null;
-  const isOnline = presence ? presence.is_online : false;
-  const lastStatusChange = presence?.last_status_change_at;
+  const isOnline = dbStatusIsOnline ?? (presence ? presence.is_online : false);
+  const lastStatusChange = dbLastStatusChangeAt || presence?.last_status_change_at;
 
   // Get active subscribed fiber plan & SLA metrics
   const plan = customer

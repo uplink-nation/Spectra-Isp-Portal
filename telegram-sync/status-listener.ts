@@ -154,7 +154,7 @@ async function processTelegramStatusMessage(
 
   // 1. Try to record in customer_status_logs table
   try {
-    await supabase.from("customer_status_logs").insert({
+    const { error: logErr } = await supabase.from("customer_status_logs").insert({
       customer_id: customer.id,
       pppoe_username: customer.pppoe_username,
       status: parsed.status,
@@ -162,21 +162,27 @@ async function processTelegramStatusMessage(
       telegram_chat_id: telegramChatId,
       telegram_message_id: telegramMessageId,
     });
-  } catch {
-    // Ignore if table not yet created
+    if (logErr) {
+      console.warn("⚠️ [Supabase customer_status_logs Insert Note]:", logErr.message || logErr);
+    }
+  } catch (e) {
+    console.warn("⚠️ [Supabase status log error]:", e);
   }
 
   // 2. Also try to update customers table directly if is_online column exists
   try {
-    await supabase
+    const { error: custErr } = await supabase
       .from("customers")
       .update({
         is_online: parsed.status === "ONLINE",
         last_status_change_at: parsed.eventTime,
       })
       .eq("id", customer.id);
-  } catch {
-    // Ignore if column not yet created
+    if (custErr) {
+      console.warn("⚠️ [Supabase customers.is_online Update Note]:", custErr.message || custErr);
+    }
+  } catch (e) {
+    console.warn("⚠️ [Supabase customers update error]:", e);
   }
 
   return "saved";
