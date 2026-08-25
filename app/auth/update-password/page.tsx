@@ -1,9 +1,14 @@
 import { UpdatePasswordForm } from "@/components/update-password-form";
 
+export const metadata = {
+  title: "Set New Password - Spectra Fiber Portal",
+  description: "Set a new secure password for your Spectra subscriber account.",
+};
+
 export default function Page() {
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-md">
         <UpdatePasswordForm />
       </div>
     </div>
