@@ -7,7 +7,7 @@
     "last_status_change_at": "2026-08-25T14:52:49.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54347,
-    "updated_at": "2026-08-25T14:52:35.249Z"
+    "updated_at": "2026-08-28T07:20:36.721Z"
   },
   "aj.test": {
     "customer_id": "e3317fbb-4334-4aac-8897-ee76293063cc",
@@ -17,187 +17,187 @@
     "last_status_change_at": "2026-08-25T14:52:49.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54347,
-    "updated_at": "2026-08-25T14:52:35.249Z"
+    "updated_at": "2026-08-28T07:20:36.721Z"
   },
   "2385b8bd-039c-4320-8c35-510fd12d2b1d": {
     "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
     "pppoe_username": "dmgNareshV_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T09:12:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:15.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54283,
-    "updated_at": "2026-08-25T14:49:29.450Z"
+    "telegram_message_id": 54383,
+    "updated_at": "2026-08-28T07:20:50.239Z"
   },
   "dmgnareshv_local@spectra.net": {
     "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
     "pppoe_username": "dmgNareshV_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T09:12:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:15.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54283,
-    "updated_at": "2026-08-25T14:49:29.450Z"
+    "telegram_message_id": 54383,
+    "updated_at": "2026-08-28T07:20:50.239Z"
   },
   "a9a99eb7-10a1-449f-aa06-5c7920566b7b": {
     "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
     "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:07:30.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-26T11:43:39.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54323,
-    "updated_at": "2026-08-25T14:49:45.214Z"
+    "telegram_message_id": 54414,
+    "updated_at": "2026-08-28T07:21:01.254Z"
   },
   "dmgjaydipm_wid@ftth.bsnl.in": {
     "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
     "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:07:30.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-26T11:43:39.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54323,
-    "updated_at": "2026-08-25T14:49:45.214Z"
+    "telegram_message_id": 54414,
+    "updated_at": "2026-08-28T07:21:01.254Z"
   },
   "c6569d82-6d9d-476c-b997-f0042960733b": {
     "customer_id": "c6569d82-6d9d-476c-b997-f0042960733b",
     "pppoe_username": "Home-net",
-    "is_online": false,
-    "status": "OFFLINE",
-    "last_status_change_at": "2026-08-25T09:54:14.000Z",
+    "is_online": true,
+    "status": "ONLINE",
+    "last_status_change_at": "2026-08-28T06:03:15.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54290,
-    "updated_at": "2026-08-25T14:49:32.955Z"
+    "telegram_message_id": 54444,
+    "updated_at": "2026-08-28T07:21:10.586Z"
   },
   "home-net": {
     "customer_id": "c6569d82-6d9d-476c-b997-f0042960733b",
     "pppoe_username": "Home-net",
-    "is_online": false,
-    "status": "OFFLINE",
-    "last_status_change_at": "2026-08-25T09:54:14.000Z",
+    "is_online": true,
+    "status": "ONLINE",
+    "last_status_change_at": "2026-08-28T06:03:15.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54290,
-    "updated_at": "2026-08-25T14:49:32.955Z"
+    "telegram_message_id": 54444,
+    "updated_at": "2026-08-28T07:21:10.586Z"
   },
   "ef3bcb1f-5383-4f07-b4dc-c240dfe31bae": {
     "customer_id": "ef3bcb1f-5383-4f07-b4dc-c240dfe31bae",
     "pppoe_username": "gj.sitaram.school",
     "is_online": false,
     "status": "OFFLINE",
-    "last_status_change_at": "2026-08-25T11:32:04.000Z",
+    "last_status_change_at": "2026-08-27T11:41:49.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54336,
-    "updated_at": "2026-08-25T14:49:49.670Z"
+    "telegram_message_id": 54436,
+    "updated_at": "2026-08-28T07:21:07.472Z"
   },
   "gj.sitaram.school": {
     "customer_id": "ef3bcb1f-5383-4f07-b4dc-c240dfe31bae",
     "pppoe_username": "gj.sitaram.school",
     "is_online": false,
     "status": "OFFLINE",
-    "last_status_change_at": "2026-08-25T11:32:04.000Z",
+    "last_status_change_at": "2026-08-27T11:41:49.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54336,
-    "updated_at": "2026-08-25T14:49:49.670Z"
+    "telegram_message_id": 54436,
+    "updated_at": "2026-08-28T07:21:07.472Z"
   },
   "2a728d14-8a40-4eb7-ae38-45d1fb8b5411": {
     "customer_id": "2a728d14-8a40-4eb7-ae38-45d1fb8b5411",
     "pppoe_username": "da2793296016_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:18:39.000Z",
+    "last_status_change_at": "2026-08-26T09:48:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54297,
-    "updated_at": "2026-08-25T14:49:35.743Z"
+    "telegram_message_id": 54408,
+    "updated_at": "2026-08-28T07:20:58.960Z"
   },
   "da2793296016_wid@ftth.bsnl.in": {
     "customer_id": "2a728d14-8a40-4eb7-ae38-45d1fb8b5411",
     "pppoe_username": "da2793296016_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:18:39.000Z",
+    "last_status_change_at": "2026-08-26T09:48:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54297,
-    "updated_at": "2026-08-25T14:49:35.743Z"
+    "telegram_message_id": 54408,
+    "updated_at": "2026-08-28T07:20:58.960Z"
   },
   "fdb6a657-1189-4dc6-a949-705860f6061c": {
     "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
     "pppoe_username": "gj.apmc.dam",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:46:05.000Z",
+    "last_status_change_at": "2026-08-26T09:49:00.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54302,
-    "updated_at": "2026-08-25T14:49:37.217Z"
+    "telegram_message_id": 54411,
+    "updated_at": "2026-08-28T07:21:00.234Z"
   },
   "gj.apmc.dam": {
     "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
     "pppoe_username": "gj.apmc.dam",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:46:05.000Z",
+    "last_status_change_at": "2026-08-26T09:49:00.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54302,
-    "updated_at": "2026-08-25T14:49:37.217Z"
+    "telegram_message_id": 54411,
+    "updated_at": "2026-08-28T07:21:00.234Z"
   },
   "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac": {
     "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
     "pppoe_username": "gj.jaydip.makwana",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:50:00.000Z",
+    "last_status_change_at": "2026-08-26T05:15:00.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54309,
-    "updated_at": "2026-08-25T14:49:40.075Z"
+    "telegram_message_id": 54393,
+    "updated_at": "2026-08-28T07:20:54.222Z"
   },
   "gj.jaydip.makwana": {
     "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
     "pppoe_username": "gj.jaydip.makwana",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:50:00.000Z",
+    "last_status_change_at": "2026-08-26T05:15:00.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54309,
-    "updated_at": "2026-08-25T14:49:40.075Z"
+    "telegram_message_id": 54393,
+    "updated_at": "2026-08-28T07:20:54.222Z"
   },
   "c194a99e-bc30-48e2-b4d1-78f69af6e87c": {
     "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
     "pppoe_username": "dmgMahekD_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:40:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:26.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54338,
-    "updated_at": "2026-08-25T14:49:50.395Z"
+    "telegram_message_id": 54385,
+    "updated_at": "2026-08-28T07:20:51.075Z"
   },
   "dmgmahekd_local@spectra.net": {
     "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
     "pppoe_username": "dmgMahekD_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:40:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:26.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54338,
-    "updated_at": "2026-08-25T14:49:50.395Z"
+    "telegram_message_id": 54385,
+    "updated_at": "2026-08-28T07:20:51.075Z"
   },
   "200ccbac-a8cc-468c-8d94-b55b401eb319": {
     "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
     "pppoe_username": "dmgRiyazC_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:49:24.000Z",
+    "last_status_change_at": "2026-08-27T22:38:19.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54308,
-    "updated_at": "2026-08-25T14:49:39.715Z"
+    "telegram_message_id": 54442,
+    "updated_at": "2026-08-28T07:21:09.762Z"
   },
   "dmgriyazc_local@spectra.net": {
     "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
     "pppoe_username": "dmgRiyazC_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:49:24.000Z",
+    "last_status_change_at": "2026-08-27T22:38:19.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54308,
-    "updated_at": "2026-08-25T14:49:39.715Z"
+    "telegram_message_id": 54442,
+    "updated_at": "2026-08-28T07:21:09.762Z"
   },
   "80c69434-a559-4f56-adc9-a90d0c332622": {
     "customer_id": "80c69434-a559-4f56-adc9-a90d0c332622",
@@ -207,7 +207,7 @@
     "last_status_change_at": "2026-08-25T10:54:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54313,
-    "updated_at": "2026-08-25T14:49:41.549Z"
+    "updated_at": "2026-08-28T07:20:23.576Z"
   },
   "dmgmadhavt_local@spectra.net": {
     "customer_id": "80c69434-a559-4f56-adc9-a90d0c332622",
@@ -217,147 +217,147 @@
     "last_status_change_at": "2026-08-25T10:54:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54313,
-    "updated_at": "2026-08-25T14:49:41.549Z"
+    "updated_at": "2026-08-28T07:20:23.576Z"
   },
   "efd2360f-9c63-434b-9664-834ca0831038": {
     "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
     "pppoe_username": "dmgFirojP_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:56:25.000Z",
+    "last_status_change_at": "2026-08-26T02:01:25.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54316,
-    "updated_at": "2026-08-25T14:49:42.643Z"
+    "telegram_message_id": 54384,
+    "updated_at": "2026-08-28T07:20:50.663Z"
   },
   "dmgfirojp_local@spectra.net": {
     "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
     "pppoe_username": "dmgFirojP_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:56:25.000Z",
+    "last_status_change_at": "2026-08-26T02:01:25.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54316,
-    "updated_at": "2026-08-25T14:49:42.643Z"
+    "telegram_message_id": 54384,
+    "updated_at": "2026-08-28T07:20:50.663Z"
   },
   "2780656a-544f-4133-ad73-e87fee375857": {
     "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
     "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:14:29.000Z",
+    "last_status_change_at": "2026-08-26T02:00:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54331,
-    "updated_at": "2026-08-25T14:49:48.073Z"
+    "telegram_message_id": 54379,
+    "updated_at": "2026-08-28T07:20:48.973Z"
   },
   "di2793222225_wid@ftth.bsnl.in": {
     "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
     "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:14:29.000Z",
+    "last_status_change_at": "2026-08-26T02:00:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54331,
-    "updated_at": "2026-08-25T14:49:48.073Z"
+    "telegram_message_id": 54379,
+    "updated_at": "2026-08-28T07:20:48.973Z"
   },
   "ce7c8f9a-62f5-4dd4-884e-793269c440c4": {
     "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
     "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:08:31.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-28T06:09:31.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54325,
-    "updated_at": "2026-08-25T14:49:45.935Z"
+    "telegram_message_id": 54445,
+    "updated_at": "2026-08-28T07:21:11.008Z"
   },
   "pr2793299202_wid@ftth.bsnl.in": {
     "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
     "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:08:31.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-28T06:09:31.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54325,
-    "updated_at": "2026-08-25T14:49:45.935Z"
+    "telegram_message_id": 54445,
+    "updated_at": "2026-08-28T07:21:11.008Z"
   },
   "41128686-2eb8-4804-b5ed-02b7d337611a": {
     "customer_id": "41128686-2eb8-4804-b5ed-02b7d337611a",
     "pppoe_username": "dmg_RajeshR_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:16:15.000Z",
+    "last_status_change_at": "2026-08-26T09:48:57.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54332,
-    "updated_at": "2026-08-25T14:49:48.430Z"
+    "telegram_message_id": 54409,
+    "updated_at": "2026-08-28T07:20:59.387Z"
   },
   "dmg_rajeshr_local@spectra.net": {
     "customer_id": "41128686-2eb8-4804-b5ed-02b7d337611a",
     "pppoe_username": "dmg_RajeshR_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:16:15.000Z",
+    "last_status_change_at": "2026-08-26T09:48:57.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54332,
-    "updated_at": "2026-08-25T14:49:48.430Z"
+    "telegram_message_id": 54409,
+    "updated_at": "2026-08-28T07:20:59.387Z"
   },
   "dmgnareshv_local": {
     "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
     "pppoe_username": "dmgNareshV_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T09:12:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:15.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54283,
-    "updated_at": "2026-08-25T14:49:29.450Z"
+    "telegram_message_id": 54383,
+    "updated_at": "2026-08-28T07:20:50.239Z"
   },
   "dmgjaydipm_wid": {
     "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
     "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:07:30.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-26T11:43:39.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54323,
-    "updated_at": "2026-08-25T14:49:45.214Z"
+    "telegram_message_id": 54414,
+    "updated_at": "2026-08-28T07:21:01.254Z"
   },
   "da2793296016_wid": {
     "customer_id": "2a728d14-8a40-4eb7-ae38-45d1fb8b5411",
     "pppoe_username": "da2793296016_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:18:39.000Z",
+    "last_status_change_at": "2026-08-26T09:48:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54297,
-    "updated_at": "2026-08-25T14:49:35.743Z"
+    "telegram_message_id": 54408,
+    "updated_at": "2026-08-28T07:20:58.960Z"
   },
   "dmg_rajeshr_local": {
     "customer_id": "41128686-2eb8-4804-b5ed-02b7d337611a",
     "pppoe_username": "dmg_RajeshR_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:16:15.000Z",
+    "last_status_change_at": "2026-08-26T09:48:57.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54332,
-    "updated_at": "2026-08-25T14:49:48.430Z"
+    "telegram_message_id": 54409,
+    "updated_at": "2026-08-28T07:20:59.387Z"
   },
   "dmgriyazc_local": {
     "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
     "pppoe_username": "dmgRiyazC_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:49:24.000Z",
+    "last_status_change_at": "2026-08-27T22:38:19.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54308,
-    "updated_at": "2026-08-25T14:49:39.715Z"
+    "telegram_message_id": 54442,
+    "updated_at": "2026-08-28T07:21:09.762Z"
   },
   "dmgmahekd_local": {
     "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
     "pppoe_username": "dmgMahekD_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:40:00.000Z",
+    "last_status_change_at": "2026-08-26T02:01:26.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54338,
-    "updated_at": "2026-08-25T14:49:50.395Z"
+    "telegram_message_id": 54385,
+    "updated_at": "2026-08-28T07:20:51.075Z"
   },
   "dmgmadhavt_local": {
     "customer_id": "80c69434-a559-4f56-adc9-a90d0c332622",
@@ -367,56 +367,56 @@
     "last_status_change_at": "2026-08-25T10:54:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54313,
-    "updated_at": "2026-08-25T14:49:41.549Z"
+    "updated_at": "2026-08-28T07:20:23.576Z"
   },
   "dmgfirojp_local": {
     "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
     "pppoe_username": "dmgFirojP_local@spectra.net",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T10:56:25.000Z",
+    "last_status_change_at": "2026-08-26T02:01:25.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54316,
-    "updated_at": "2026-08-25T14:49:42.643Z"
+    "telegram_message_id": 54384,
+    "updated_at": "2026-08-28T07:20:50.663Z"
   },
   "di2793222225_wid": {
     "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
     "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:14:29.000Z",
+    "last_status_change_at": "2026-08-26T02:00:54.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54331,
-    "updated_at": "2026-08-25T14:49:48.073Z"
+    "telegram_message_id": 54379,
+    "updated_at": "2026-08-28T07:20:48.973Z"
   },
   "pr2793299202_wid": {
     "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
     "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
-    "is_online": true,
-    "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:08:31.000Z",
+    "is_online": false,
+    "status": "OFFLINE",
+    "last_status_change_at": "2026-08-28T06:09:31.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54325,
-    "updated_at": "2026-08-25T14:49:45.935Z"
+    "telegram_message_id": 54445,
+    "updated_at": "2026-08-28T07:21:11.008Z"
   },
   "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260": {
     "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
     "pppoe_username": "home",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:41:39.000Z",
+    "last_status_change_at": "2026-08-27T21:47:14.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54340,
-    "updated_at": "2026-08-25T14:49:51.119Z"
+    "telegram_message_id": 54440,
+    "updated_at": "2026-08-28T07:21:08.942Z"
   },
   "home": {
     "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
     "pppoe_username": "home",
     "is_online": true,
     "status": "ONLINE",
-    "last_status_change_at": "2026-08-25T11:41:39.000Z",
+    "last_status_change_at": "2026-08-27T21:47:14.000Z",
     "telegram_chat_id": -5450568819,
-    "telegram_message_id": 54340,
-    "updated_at": "2026-08-25T14:49:51.119Z"
+    "telegram_message_id": 54440,
+    "updated_at": "2026-08-28T07:21:08.942Z"
   }
 }

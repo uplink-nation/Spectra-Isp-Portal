@@ -34,6 +34,7 @@ export type Customer = {
   last_status_change_at?: string;
   created_at?: string;
   plan?: CustomerPlan;
+  plan_id?: string;
   plan_name?: string;
   plan_speed_mbps?: number;
   plan_upload_mbps?: number;

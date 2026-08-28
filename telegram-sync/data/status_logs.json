@@ -1,5 +1,764 @@
 [
   {
+    "id": "status-54445",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-28T06:09:31.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54445,
+    "created_at": "2026-08-28T07:21:11.011Z"
+  },
+  {
+    "id": "status-54444",
+    "customer_id": "c6569d82-6d9d-476c-b997-f0042960733b",
+    "customer_name": "Rongen",
+    "pppoe_username": "Home-net",
+    "status": "ONLINE",
+    "event_time": "2026-08-28T06:03:15.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54444,
+    "created_at": "2026-08-28T07:21:10.589Z"
+  },
+  {
+    "id": "status-54443",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-28T04:30:10.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54443,
+    "created_at": "2026-08-28T07:21:10.188Z"
+  },
+  {
+    "id": "status-54442",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-27T22:38:19.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54442,
+    "created_at": "2026-08-28T07:21:09.765Z"
+  },
+  {
+    "id": "status-54441",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-27T22:37:59.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54441,
+    "created_at": "2026-08-28T07:21:09.356Z"
+  },
+  {
+    "id": "status-54440",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "ONLINE",
+    "event_time": "2026-08-27T21:47:14.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54440,
+    "created_at": "2026-08-28T07:21:08.945Z"
+  },
+  {
+    "id": "status-54439",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "OFFLINE",
+    "event_time": "2026-08-27T21:46:54.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54439,
+    "created_at": "2026-08-28T07:21:08.525Z"
+  },
+  {
+    "id": "status-54438",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-27T16:37:01.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54438,
+    "created_at": "2026-08-28T07:21:08.114Z"
+  },
+  {
+    "id": "status-54436",
+    "customer_id": "ef3bcb1f-5383-4f07-b4dc-c240dfe31bae",
+    "customer_name": "Sitaram Nagar School",
+    "pppoe_username": "gj.sitaram.school",
+    "status": "OFFLINE",
+    "event_time": "2026-08-27T11:41:49.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54436,
+    "created_at": "2026-08-28T07:21:07.476Z"
+  },
+  {
+    "id": "status-54432",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-27T09:43:25.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54432,
+    "created_at": "2026-08-28T07:21:06.454Z"
+  },
+  {
+    "id": "status-54430",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-27T06:29:06.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54430,
+    "created_at": "2026-08-28T07:21:05.838Z"
+  },
+  {
+    "id": "status-54426",
+    "customer_id": "ef3bcb1f-5383-4f07-b4dc-c240dfe31bae",
+    "customer_name": "Sitaram Nagar School",
+    "pppoe_username": "gj.sitaram.school",
+    "status": "ONLINE",
+    "event_time": "2026-08-27T05:21:24.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54426,
+    "created_at": "2026-08-28T07:21:05.233Z"
+  },
+  {
+    "id": "status-54422",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-27T03:15:06.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54422,
+    "created_at": "2026-08-28T07:21:04.184Z"
+  },
+  {
+    "id": "status-54420",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T22:16:39.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54420,
+    "created_at": "2026-08-28T07:21:03.565Z"
+  },
+  {
+    "id": "status-54419",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T22:16:19.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54419,
+    "created_at": "2026-08-28T07:21:03.142Z"
+  },
+  {
+    "id": "status-54418",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T21:48:24.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54418,
+    "created_at": "2026-08-28T07:21:02.723Z"
+  },
+  {
+    "id": "status-54417",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T21:48:04.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54417,
+    "created_at": "2026-08-28T07:21:02.304Z"
+  },
+  {
+    "id": "status-54416",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T17:47:05.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54416,
+    "created_at": "2026-08-28T07:21:01.893Z"
+  },
+  {
+    "id": "status-54414",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T11:43:39.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54414,
+    "created_at": "2026-08-28T07:21:01.257Z"
+  },
+  {
+    "id": "status-54413",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T11:32:30.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54413,
+    "created_at": "2026-08-28T07:21:00.852Z"
+  },
+  {
+    "id": "status-54411",
+    "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
+    "customer_name": "APMC-Damnagar",
+    "pppoe_username": "gj.apmc.dam",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T09:49:00.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54411,
+    "created_at": "2026-08-28T07:21:00.238Z"
+  },
+  {
+    "id": "status-54410",
+    "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
+    "customer_name": "APMC-Damnagar",
+    "pppoe_username": "gj.apmc.dam",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T09:48:59.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54410,
+    "created_at": "2026-08-28T07:20:59.818Z"
+  },
+  {
+    "id": "status-54409",
+    "customer_id": "41128686-2eb8-4804-b5ed-02b7d337611a",
+    "customer_name": "Rajesh",
+    "pppoe_username": "dmg_RajeshR_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T09:48:57.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54409,
+    "created_at": "2026-08-28T07:20:59.390Z"
+  },
+  {
+    "id": "status-54408",
+    "customer_id": "2a728d14-8a40-4eb7-ae38-45d1fb8b5411",
+    "customer_name": "CHC-Damnagar",
+    "pppoe_username": "da2793296016_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T09:48:54.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54408,
+    "created_at": "2026-08-28T07:20:58.963Z"
+  },
+  {
+    "id": "status-54407",
+    "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
+    "customer_name": "APMC-Damnagar",
+    "pppoe_username": "gj.apmc.dam",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:44:50.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54407,
+    "created_at": "2026-08-28T07:20:58.545Z"
+  },
+  {
+    "id": "status-54406",
+    "customer_id": "fdb6a657-1189-4dc6-a949-705860f6061c",
+    "customer_name": "APMC-Damnagar",
+    "pppoe_username": "gj.apmc.dam",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:44:49.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54406,
+    "created_at": "2026-08-28T07:20:58.143Z"
+  },
+  {
+    "id": "status-54405",
+    "customer_id": "41128686-2eb8-4804-b5ed-02b7d337611a",
+    "customer_name": "Rajesh",
+    "pppoe_username": "dmg_RajeshR_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:44:47.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54405,
+    "created_at": "2026-08-28T07:20:57.743Z"
+  },
+  {
+    "id": "status-54404",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:44:44.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54404,
+    "created_at": "2026-08-28T07:20:57.319Z"
+  },
+  {
+    "id": "status-54403",
+    "customer_id": "2a728d14-8a40-4eb7-ae38-45d1fb8b5411",
+    "customer_name": "CHC-Damnagar",
+    "pppoe_username": "da2793296016_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:44:39.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54403,
+    "created_at": "2026-08-28T07:20:56.903Z"
+  },
+  {
+    "id": "status-54401",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T09:34:10.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54401,
+    "created_at": "2026-08-28T07:20:56.287Z"
+  },
+  {
+    "id": "status-54400",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T09:25:40.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54400,
+    "created_at": "2026-08-28T07:20:55.884Z"
+  },
+  {
+    "id": "status-54396",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T08:36:30.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54396,
+    "created_at": "2026-08-28T07:20:55.268Z"
+  },
+  {
+    "id": "status-54395",
+    "customer_id": "a9a99eb7-10a1-449f-aa06-5c7920566b7b",
+    "customer_name": "Prince Mensware",
+    "pppoe_username": "dmgJaydipM_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T08:16:45.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54395,
+    "created_at": "2026-08-28T07:20:54.858Z"
+  },
+  {
+    "id": "status-54393",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T05:15:00.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54393,
+    "created_at": "2026-08-28T07:20:54.225Z"
+  },
+  {
+    "id": "status-54392",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T05:09:25.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54392,
+    "created_at": "2026-08-28T07:20:53.549Z"
+  },
+  {
+    "id": "status-54390",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T05:04:35.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54390,
+    "created_at": "2026-08-28T07:20:52.937Z"
+  },
+  {
+    "id": "status-54389",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T04:53:55.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54389,
+    "created_at": "2026-08-28T07:20:52.516Z"
+  },
+  {
+    "id": "status-54387",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T03:23:45.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54387,
+    "created_at": "2026-08-28T07:20:51.901Z"
+  },
+  {
+    "id": "status-54386",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:01:29.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54386,
+    "created_at": "2026-08-28T07:20:51.487Z"
+  },
+  {
+    "id": "status-54385",
+    "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
+    "customer_name": "Mahek Dudhrejia",
+    "pppoe_username": "dmgMahekD_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:01:26.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54385,
+    "created_at": "2026-08-28T07:20:51.076Z"
+  },
+  {
+    "id": "status-54384",
+    "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
+    "customer_name": "Moin Pathan",
+    "pppoe_username": "dmgFirojP_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:01:25.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54384,
+    "created_at": "2026-08-28T07:20:50.666Z"
+  },
+  {
+    "id": "status-54383",
+    "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
+    "customer_name": "Naresh Vaghela",
+    "pppoe_username": "dmgNareshV_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:01:15.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54383,
+    "created_at": "2026-08-28T07:20:50.244Z"
+  },
+  {
+    "id": "status-54380",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:01:00.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54380,
+    "created_at": "2026-08-28T07:20:49.379Z"
+  },
+  {
+    "id": "status-54379",
+    "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
+    "customer_name": "GSRTC-Damnagar",
+    "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T02:00:54.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54379,
+    "created_at": "2026-08-28T07:20:48.976Z"
+  },
+  {
+    "id": "status-54375",
+    "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
+    "customer_name": "Mahek Dudhrejia",
+    "pppoe_username": "dmgMahekD_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:32.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54375,
+    "created_at": "2026-08-28T07:20:47.959Z"
+  },
+  {
+    "id": "status-54374",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:30.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54374,
+    "created_at": "2026-08-28T07:20:47.545Z"
+  },
+  {
+    "id": "status-54373",
+    "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
+    "customer_name": "GSRTC-Damnagar",
+    "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:29.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54373,
+    "created_at": "2026-08-28T07:20:47.129Z"
+  },
+  {
+    "id": "status-54372",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:27.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54372,
+    "created_at": "2026-08-28T07:20:46.722Z"
+  },
+  {
+    "id": "status-54371",
+    "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
+    "customer_name": "Naresh Vaghela",
+    "pppoe_username": "dmgNareshV_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:26.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54371,
+    "created_at": "2026-08-28T07:20:46.302Z"
+  },
+  {
+    "id": "status-54370",
+    "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
+    "customer_name": "Moin Pathan",
+    "pppoe_username": "dmgFirojP_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:53:25.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54370,
+    "created_at": "2026-08-28T07:20:45.891Z"
+  },
+  {
+    "id": "status-54368",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:25:29.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54368,
+    "created_at": "2026-08-28T07:20:45.269Z"
+  },
+  {
+    "id": "status-54367",
+    "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
+    "customer_name": "Mahek Dudhrejia",
+    "pppoe_username": "dmgMahekD_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:25:26.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54367,
+    "created_at": "2026-08-28T07:20:44.851Z"
+  },
+  {
+    "id": "status-54366",
+    "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
+    "customer_name": "Moin Pathan",
+    "pppoe_username": "dmgFirojP_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:25:25.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54366,
+    "created_at": "2026-08-28T07:20:44.426Z"
+  },
+  {
+    "id": "status-54365",
+    "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
+    "customer_name": "Naresh Vaghela",
+    "pppoe_username": "dmgNareshV_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:25:15.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54365,
+    "created_at": "2026-08-28T07:20:44.009Z"
+  },
+  {
+    "id": "status-54363",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:25:00.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54363,
+    "created_at": "2026-08-28T07:20:43.401Z"
+  },
+  {
+    "id": "status-54362",
+    "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
+    "customer_name": "GSRTC-Damnagar",
+    "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
+    "status": "ONLINE",
+    "event_time": "2026-08-26T01:24:49.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54362,
+    "created_at": "2026-08-28T07:20:42.996Z"
+  },
+  {
+    "id": "status-54361",
+    "customer_id": "efd2360f-9c63-434b-9664-834ca0831038",
+    "customer_name": "Moin Pathan",
+    "pppoe_username": "dmgFirojP_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:50.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54361,
+    "created_at": "2026-08-28T07:20:42.580Z"
+  },
+  {
+    "id": "status-54360",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:49.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54360,
+    "created_at": "2026-08-28T07:20:42.167Z"
+  },
+  {
+    "id": "status-54359",
+    "customer_id": "2385b8bd-039c-4320-8c35-510fd12d2b1d",
+    "customer_name": "Naresh Vaghela",
+    "pppoe_username": "dmgNareshV_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:45.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54359,
+    "created_at": "2026-08-28T07:20:41.756Z"
+  },
+  {
+    "id": "status-54358",
+    "customer_id": "c194a99e-bc30-48e2-b4d1-78f69af6e87c",
+    "customer_name": "Mahek Dudhrejia",
+    "pppoe_username": "dmgMahekD_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:41.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54358,
+    "created_at": "2026-08-28T07:20:41.335Z"
+  },
+  {
+    "id": "status-54357",
+    "customer_id": "2780656a-544f-4133-ad73-e87fee375857",
+    "customer_name": "GSRTC-Damnagar",
+    "pppoe_username": "di2793222225_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:39.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54357,
+    "created_at": "2026-08-28T07:20:40.930Z"
+  },
+  {
+    "id": "status-54355",
+    "customer_id": "c78bab21-78a8-4ce7-8f13-e4fe2b5d00ac",
+    "customer_name": "Bharat Fashion",
+    "pppoe_username": "gj.jaydip.makwana",
+    "status": "OFFLINE",
+    "event_time": "2026-08-26T01:22:35.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54355,
+    "created_at": "2026-08-28T07:20:40.064Z"
+  },
+  {
+    "id": "status-54354",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "ONLINE",
+    "event_time": "2026-08-25T22:47:24.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54354,
+    "created_at": "2026-08-28T07:20:39.663Z"
+  },
+  {
+    "id": "status-54353",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "OFFLINE",
+    "event_time": "2026-08-25T22:47:04.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54353,
+    "created_at": "2026-08-28T07:20:39.254Z"
+  },
+  {
+    "id": "status-54352",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "ONLINE",
+    "event_time": "2026-08-25T22:30:44.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54352,
+    "created_at": "2026-08-28T07:20:38.817Z"
+  },
+  {
+    "id": "status-54351",
+    "customer_id": "200ccbac-a8cc-468c-8d94-b55b401eb319",
+    "customer_name": "Riyaz Chudasama",
+    "pppoe_username": "dmgRiyazC_local@spectra.net",
+    "status": "OFFLINE",
+    "event_time": "2026-08-25T22:30:24.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54351,
+    "created_at": "2026-08-28T07:20:38.397Z"
+  },
+  {
+    "id": "status-54350",
+    "customer_id": "ce7c8f9a-62f5-4dd4-884e-793269c440c4",
+    "customer_name": "Prakash Kava",
+    "pppoe_username": "pr2793299202_wid@ftth.bsnl.in",
+    "status": "OFFLINE",
+    "event_time": "2026-08-25T18:11:40.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54350,
+    "created_at": "2026-08-28T07:20:37.975Z"
+  },
+  {
+    "id": "status-54349",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "ONLINE",
+    "event_time": "2026-08-25T15:06:04.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54349,
+    "created_at": "2026-08-28T07:20:37.560Z"
+  },
+  {
+    "id": "status-54348",
+    "customer_id": "c0ddfa19-1e6b-4fc3-b05f-270a05bd3260",
+    "customer_name": "home",
+    "pppoe_username": "home",
+    "status": "OFFLINE",
+    "event_time": "2026-08-25T15:04:49.000Z",
+    "telegram_chat_id": -5450568819,
+    "telegram_message_id": 54348,
+    "created_at": "2026-08-28T07:20:37.139Z"
+  },
+  {
     "id": "status-54347",
     "customer_id": "e3317fbb-4334-4aac-8897-ee76293063cc",
     "customer_name": "Ajay",
@@ -8,7 +767,7 @@
     "event_time": "2026-08-25T14:52:49.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54347,
-    "created_at": "2026-08-25T14:52:35.254Z"
+    "created_at": "2026-08-28T07:20:36.725Z"
   },
   {
     "id": "status-54346",
@@ -19,7 +778,7 @@
     "event_time": "2026-08-25T14:42:24.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54346,
-    "created_at": "2026-08-25T14:49:52.552Z"
+    "created_at": "2026-08-28T07:20:36.302Z"
   },
   {
     "id": "status-54344",
@@ -30,7 +789,7 @@
     "event_time": "2026-08-25T13:50:14.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54344,
-    "created_at": "2026-08-25T14:49:52.011Z"
+    "created_at": "2026-08-28T07:20:35.683Z"
   },
   {
     "id": "status-54343",
@@ -41,7 +800,7 @@
     "event_time": "2026-08-25T13:47:59.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54343,
-    "created_at": "2026-08-25T14:49:51.652Z"
+    "created_at": "2026-08-28T07:20:35.270Z"
   },
   {
     "id": "status-54340",
@@ -52,7 +811,7 @@
     "event_time": "2026-08-25T11:41:39.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54340,
-    "created_at": "2026-08-25T14:49:51.121Z"
+    "created_at": "2026-08-28T07:20:34.642Z"
   },
   {
     "id": "status-54339",
@@ -63,7 +822,7 @@
     "event_time": "2026-08-25T11:41:24.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54339,
-    "created_at": "2026-08-25T14:49:50.756Z"
+    "created_at": "2026-08-28T07:20:34.218Z"
   },
   {
     "id": "status-54338",
@@ -74,7 +833,7 @@
     "event_time": "2026-08-25T11:40:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54338,
-    "created_at": "2026-08-25T14:49:50.397Z"
+    "created_at": "2026-08-28T07:20:33.796Z"
   },
   {
     "id": "status-54337",
@@ -85,7 +844,7 @@
     "event_time": "2026-08-25T11:37:55.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54337,
-    "created_at": "2026-08-25T14:49:50.034Z"
+    "created_at": "2026-08-28T07:20:33.389Z"
   },
   {
     "id": "status-54336",
@@ -96,7 +855,7 @@
     "event_time": "2026-08-25T11:32:04.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54336,
-    "created_at": "2026-08-25T14:49:49.672Z"
+    "created_at": "2026-08-28T07:20:32.974Z"
   },
   {
     "id": "status-54334",
@@ -107,7 +866,7 @@
     "event_time": "2026-08-25T11:28:35.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54334,
-    "created_at": "2026-08-25T14:49:49.143Z"
+    "created_at": "2026-08-28T07:20:32.330Z"
   },
   {
     "id": "status-54333",
@@ -118,7 +877,7 @@
     "event_time": "2026-08-25T11:26:35.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54333,
-    "created_at": "2026-08-25T14:49:48.787Z"
+    "created_at": "2026-08-28T07:20:31.909Z"
   },
   {
     "id": "status-54332",
@@ -129,7 +888,7 @@
     "event_time": "2026-08-25T11:16:15.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54332,
-    "created_at": "2026-08-25T14:49:48.433Z"
+    "created_at": "2026-08-28T07:20:31.496Z"
   },
   {
     "id": "status-54331",
@@ -140,7 +899,7 @@
     "event_time": "2026-08-25T11:14:29.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54331,
-    "created_at": "2026-08-25T14:49:48.075Z"
+    "created_at": "2026-08-28T07:20:31.095Z"
   },
   {
     "id": "status-54330",
@@ -151,7 +910,7 @@
     "event_time": "2026-08-25T11:14:10.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54330,
-    "created_at": "2026-08-25T14:49:47.713Z"
+    "created_at": "2026-08-28T07:20:30.712Z"
   },
   {
     "id": "status-54329",
@@ -162,7 +921,7 @@
     "event_time": "2026-08-25T11:13:24.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54329,
-    "created_at": "2026-08-25T14:49:47.360Z"
+    "created_at": "2026-08-28T07:20:30.290Z"
   },
   {
     "id": "status-54328",
@@ -173,7 +932,7 @@
     "event_time": "2026-08-25T11:12:14.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54328,
-    "created_at": "2026-08-25T14:49:47.009Z"
+    "created_at": "2026-08-28T07:20:29.875Z"
   },
   {
     "id": "status-54327",
@@ -184,7 +943,7 @@
     "event_time": "2026-08-25T11:11:09.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54327,
-    "created_at": "2026-08-25T14:49:46.654Z"
+    "created_at": "2026-08-28T07:20:29.453Z"
   },
   {
     "id": "status-54326",
@@ -195,7 +954,7 @@
     "event_time": "2026-08-25T11:08:34.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54326,
-    "created_at": "2026-08-25T14:49:46.303Z"
+    "created_at": "2026-08-28T07:20:29.041Z"
   },
   {
     "id": "status-54325",
@@ -206,7 +965,7 @@
     "event_time": "2026-08-25T11:08:31.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54325,
-    "created_at": "2026-08-25T14:49:45.938Z"
+    "created_at": "2026-08-28T07:20:28.603Z"
   },
   {
     "id": "status-54324",
@@ -217,7 +976,7 @@
     "event_time": "2026-08-25T11:08:19.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54324,
-    "created_at": "2026-08-25T14:49:45.580Z"
+    "created_at": "2026-08-28T07:20:28.173Z"
   },
   {
     "id": "status-54323",
@@ -228,7 +987,7 @@
     "event_time": "2026-08-25T11:07:30.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54323,
-    "created_at": "2026-08-25T14:49:45.216Z"
+    "created_at": "2026-08-28T07:20:27.752Z"
   },
   {
     "id": "status-54322",
@@ -239,7 +998,7 @@
     "event_time": "2026-08-25T11:06:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54322,
-    "created_at": "2026-08-25T14:49:44.857Z"
+    "created_at": "2026-08-28T07:20:27.336Z"
   },
   {
     "id": "status-54321",
@@ -250,7 +1009,7 @@
     "event_time": "2026-08-25T11:04:46.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54321,
-    "created_at": "2026-08-25T14:49:44.470Z"
+    "created_at": "2026-08-28T07:20:26.908Z"
   },
   {
     "id": "status-54320",
@@ -261,7 +1020,7 @@
     "event_time": "2026-08-25T11:04:36.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54320,
-    "created_at": "2026-08-25T14:49:44.113Z"
+    "created_at": "2026-08-28T07:20:26.497Z"
   },
   {
     "id": "status-54319",
@@ -272,7 +1031,7 @@
     "event_time": "2026-08-25T10:59:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54319,
-    "created_at": "2026-08-25T14:49:43.733Z"
+    "created_at": "2026-08-28T07:20:26.067Z"
   },
   {
     "id": "status-54318",
@@ -283,7 +1042,7 @@
     "event_time": "2026-08-25T10:57:34.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54318,
-    "created_at": "2026-08-25T14:49:43.369Z"
+    "created_at": "2026-08-28T07:20:25.655Z"
   },
   {
     "id": "status-54317",
@@ -294,7 +1053,7 @@
     "event_time": "2026-08-25T10:57:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54317,
-    "created_at": "2026-08-25T14:49:43.013Z"
+    "created_at": "2026-08-28T07:20:25.236Z"
   },
   {
     "id": "status-54316",
@@ -305,7 +1064,7 @@
     "event_time": "2026-08-25T10:56:25.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54316,
-    "created_at": "2026-08-25T14:49:42.644Z"
+    "created_at": "2026-08-28T07:20:24.837Z"
   },
   {
     "id": "status-54315",
@@ -316,7 +1075,7 @@
     "event_time": "2026-08-25T10:54:44.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54315,
-    "created_at": "2026-08-25T14:49:42.277Z"
+    "created_at": "2026-08-28T07:20:24.429Z"
   },
   {
     "id": "status-54314",
@@ -327,7 +1086,7 @@
     "event_time": "2026-08-25T10:54:24.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54314,
-    "created_at": "2026-08-25T14:49:41.919Z"
+    "created_at": "2026-08-28T07:20:23.998Z"
   },
   {
     "id": "status-54313",
@@ -338,7 +1097,7 @@
     "event_time": "2026-08-25T10:54:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54313,
-    "created_at": "2026-08-25T14:49:41.550Z"
+    "created_at": "2026-08-28T07:20:23.579Z"
   },
   {
     "id": "status-54312",
@@ -349,7 +1108,7 @@
     "event_time": "2026-08-25T10:54:05.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54312,
-    "created_at": "2026-08-25T14:49:41.188Z"
+    "created_at": "2026-08-28T07:20:23.163Z"
   },
   {
     "id": "status-54311",
@@ -360,7 +1119,7 @@
     "event_time": "2026-08-25T10:53:45.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54311,
-    "created_at": "2026-08-25T14:49:40.811Z"
+    "created_at": "2026-08-28T07:20:22.730Z"
   },
   {
     "id": "status-54310",
@@ -371,7 +1130,7 @@
     "event_time": "2026-08-25T10:50:55.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54310,
-    "created_at": "2026-08-25T14:49:40.442Z"
+    "created_at": "2026-08-28T07:20:22.310Z"
   },
   {
     "id": "status-54309",
@@ -382,7 +1141,7 @@
     "event_time": "2026-08-25T10:50:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54309,
-    "created_at": "2026-08-25T14:49:40.078Z"
+    "created_at": "2026-08-28T07:20:21.881Z"
   },
   {
     "id": "status-54308",
@@ -393,7 +1152,7 @@
     "event_time": "2026-08-25T10:49:24.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54308,
-    "created_at": "2026-08-25T14:49:39.716Z"
+    "created_at": "2026-08-28T07:20:21.446Z"
   },
   {
     "id": "status-54307",
@@ -404,7 +1163,7 @@
     "event_time": "2026-08-25T10:49:14.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54307,
-    "created_at": "2026-08-25T14:49:39.347Z"
+    "created_at": "2026-08-28T07:20:21.032Z"
   },
   {
     "id": "status-54306",
@@ -415,7 +1174,7 @@
     "event_time": "2026-08-25T10:48:50.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54306,
-    "created_at": "2026-08-25T14:49:38.980Z"
+    "created_at": "2026-08-28T07:20:20.604Z"
   },
   {
     "id": "status-54305",
@@ -426,7 +1185,7 @@
     "event_time": "2026-08-25T10:48:30.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54305,
-    "created_at": "2026-08-25T14:49:38.315Z"
+    "created_at": "2026-08-28T07:20:20.183Z"
   },
   {
     "id": "status-54304",
@@ -437,7 +1196,7 @@
     "event_time": "2026-08-25T10:48:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54304,
-    "created_at": "2026-08-25T14:49:37.942Z"
+    "created_at": "2026-08-28T07:20:19.760Z"
   },
   {
     "id": "status-54303",
@@ -448,7 +1207,7 @@
     "event_time": "2026-08-25T10:46:35.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54303,
-    "created_at": "2026-08-25T14:49:37.575Z"
+    "created_at": "2026-08-28T07:20:19.353Z"
   },
   {
     "id": "status-54302",
@@ -459,7 +1218,7 @@
     "event_time": "2026-08-25T10:46:05.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54302,
-    "created_at": "2026-08-25T14:49:37.220Z"
+    "created_at": "2026-08-28T07:20:18.941Z"
   },
   {
     "id": "status-54301",
@@ -470,7 +1229,7 @@
     "event_time": "2026-08-25T10:45:55.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54301,
-    "created_at": "2026-08-25T14:49:36.837Z"
+    "created_at": "2026-08-28T07:20:18.535Z"
   },
   {
     "id": "status-54300",
@@ -481,7 +1240,7 @@
     "event_time": "2026-08-25T10:45:20.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54300,
-    "created_at": "2026-08-25T14:49:36.469Z"
+    "created_at": "2026-08-28T07:20:18.126Z"
   },
   {
     "id": "status-54298",
@@ -492,7 +1251,7 @@
     "event_time": "2026-08-25T10:29:15.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54298,
-    "created_at": "2026-08-25T14:49:36.112Z"
+    "created_at": "2026-08-28T07:20:17.732Z"
   },
   {
     "id": "status-54297",
@@ -503,7 +1262,7 @@
     "event_time": "2026-08-25T10:18:39.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54297,
-    "created_at": "2026-08-25T14:49:35.745Z"
+    "created_at": "2026-08-28T07:20:17.309Z"
   },
   {
     "id": "status-54296",
@@ -514,7 +1273,7 @@
     "event_time": "2026-08-25T10:18:09.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54296,
-    "created_at": "2026-08-25T14:49:35.086Z"
+    "created_at": "2026-08-28T07:20:16.894Z"
   },
   {
     "id": "status-54295",
@@ -525,7 +1284,7 @@
     "event_time": "2026-08-25T10:15:54.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54295,
-    "created_at": "2026-08-25T14:49:34.721Z"
+    "created_at": "2026-08-28T07:20:16.479Z"
   },
   {
     "id": "status-54294",
@@ -536,7 +1295,7 @@
     "event_time": "2026-08-25T10:05:49.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54294,
-    "created_at": "2026-08-25T14:49:34.062Z"
+    "created_at": "2026-08-28T07:20:16.051Z"
   },
   {
     "id": "status-54292",
@@ -547,7 +1306,7 @@
     "event_time": "2026-08-25T10:03:44.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54292,
-    "created_at": "2026-08-25T14:49:33.515Z"
+    "created_at": "2026-08-28T07:20:15.384Z"
   },
   {
     "id": "status-54290",
@@ -558,7 +1317,7 @@
     "event_time": "2026-08-25T09:54:14.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54290,
-    "created_at": "2026-08-25T14:49:32.958Z"
+    "created_at": "2026-08-28T07:20:14.758Z"
   },
   {
     "id": "status-54289",
@@ -569,7 +1328,7 @@
     "event_time": "2026-08-25T09:53:19.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54289,
-    "created_at": "2026-08-25T14:49:32.585Z"
+    "created_at": "2026-08-28T07:20:14.343Z"
   },
   {
     "id": "status-54288",
@@ -580,7 +1339,7 @@
     "event_time": "2026-08-25T09:49:05.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54288,
-    "created_at": "2026-08-25T14:49:32.214Z"
+    "created_at": "2026-08-28T07:20:13.915Z"
   },
   {
     "id": "status-54287",
@@ -591,7 +1350,7 @@
     "event_time": "2026-08-25T09:40:49.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54287,
-    "created_at": "2026-08-25T14:49:31.540Z"
+    "created_at": "2026-08-28T07:20:13.475Z"
   },
   {
     "id": "status-54286",
@@ -602,7 +1361,7 @@
     "event_time": "2026-08-25T09:31:50.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54286,
-    "created_at": "2026-08-25T14:49:31.157Z"
+    "created_at": "2026-08-28T07:20:13.059Z"
   },
   {
     "id": "status-54285",
@@ -613,7 +1372,7 @@
     "event_time": "2026-08-25T09:23:04.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54285,
-    "created_at": "2026-08-25T14:49:30.768Z"
+    "created_at": "2026-08-28T07:20:12.644Z"
   },
   {
     "id": "status-54284",
@@ -624,7 +1383,7 @@
     "event_time": "2026-08-25T09:20:54.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54284,
-    "created_at": "2026-08-25T14:49:30.102Z"
+    "created_at": "2026-08-28T07:20:12.225Z"
   },
   {
     "id": "status-54283",
@@ -635,7 +1394,7 @@
     "event_time": "2026-08-25T09:12:00.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54283,
-    "created_at": "2026-08-25T14:49:29.452Z"
+    "created_at": "2026-08-28T07:20:11.802Z"
   },
   {
     "id": "status-54281",
@@ -646,7 +1405,7 @@
     "event_time": "2026-08-25T09:01:54.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54281,
-    "created_at": "2026-08-25T14:49:28.896Z"
+    "created_at": "2026-08-28T07:20:10.860Z"
   },
   {
     "id": "status-54280",
@@ -657,7 +1416,7 @@
     "event_time": "2026-08-25T08:59:39.000Z",
     "telegram_chat_id": -5450568819,
     "telegram_message_id": 54280,
-    "created_at": "2026-08-25T14:49:28.233Z"
+    "created_at": "2026-08-28T07:20:10.312Z"
   },
   {
     "id": "status-98",

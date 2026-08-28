@@ -8,7 +8,7 @@ import { verifyAdminAccess } from "@/lib/admin-auth";
 import { getDbTickets, getDbSpeedTests } from "@/lib/supabase/admin";
 import { getCustomerPresence, getStoredStatusLogs } from "@/lib/presence-store";
 import { getCustomerPlan } from "@/lib/plan-store";
-import type { Customer, SupportTicket, SpeedTestRecord } from "@/types/portal";
+import type { Customer, SupportTicket, SpeedTestRecord, CustomerStatusRecord, PresenceEntry, CustomerOnlineStatus } from "@/types/portal";
 
 export const dynamic = "force-dynamic";
 
@@ -57,11 +57,31 @@ export default async function SupportPage() {
     redirect("/auth/login");
   }
 
-  const { data: customer } = await supabase
+  let customer: Customer | null = null;
+
+  const initialCustQuery = await supabase
     .from("customers")
-    .select("id, name, pppoe_username")
+    .select(
+      "id, name, pppoe_username, plan_id, plan_name, plan_speed_mbps, plan_upload_mbps, plan_price_inr, plan_data_limit_gb, plan_renewal_date, is_online, last_status_change_at"
+    )
     .eq("auth_user_id", user.id)
     .maybeSingle<Customer>();
+
+  if (initialCustQuery.error) {
+    const fallbackCustQuery = await supabase
+      .from("customers")
+      .select("id, name, pppoe_username")
+      .eq("auth_user_id", user.id)
+      .maybeSingle<Customer>();
+
+    if (fallbackCustQuery.error || !fallbackCustQuery.data) {
+      console.warn("Support page customer lookup fallback error:", fallbackCustQuery.error);
+    } else {
+      customer = fallbackCustQuery.data;
+    }
+  } else {
+    customer = initialCustQuery.data;
+  }
 
   if (!customer) {
     return (
@@ -103,12 +123,87 @@ export default async function SupportPage() {
     console.warn("Supabase speed_tests table query fallback:", err);
   }
 
-  // Fetch real-time presence and presence transition logs
-  const customerPresence = getCustomerPresence(customer.id, customer.pppoe_username);
-  const statusLogs = getStoredStatusLogs(customer.id, 20);
+  // Get real-time connection presence status for this subscriber from Supabase & presence store
+  let dbStatusIsOnline: boolean | undefined = customer?.is_online ?? undefined;
+  let dbLastStatusChangeAt: string | undefined = customer?.last_status_change_at ?? undefined;
+
+  try {
+    const { data: latestLog } = await supabase
+      .from("customer_status_logs")
+      .select("status, event_time")
+      .eq("customer_id", customer.id)
+      .order("event_time", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (latestLog) {
+      dbStatusIsOnline = latestLog.status === "ONLINE";
+      dbLastStatusChangeAt = (latestLog.event_time as string) || dbLastStatusChangeAt;
+    }
+  } catch {
+    // Ignore if table not yet created
+  }
+
+  const presence = getCustomerPresence(customer.id, customer.pppoe_username, {
+    is_online: dbStatusIsOnline,
+    last_status_change_at: dbLastStatusChangeAt,
+  });
+
+  const isOnline = dbStatusIsOnline ?? (presence ? presence.is_online : false);
+  const lastStatusChange = dbLastStatusChangeAt || presence?.last_status_change_at;
+
+  const customerPresence: PresenceEntry = {
+    customer_id: customer.id,
+    pppoe_username: customer.pppoe_username,
+    is_online: isOnline,
+    status: (isOnline ? "ONLINE" : "OFFLINE") as CustomerOnlineStatus,
+    last_status_change_at: lastStatusChange || new Date().toISOString(),
+    telegram_chat_id: presence?.telegram_chat_id,
+    telegram_message_id: presence?.telegram_message_id,
+    updated_at: new Date().toISOString(),
+  };
+
+  // Fetch real-time status transition logs from Supabase with fallback to local store
+  let statusLogs: CustomerStatusRecord[] = [];
+  try {
+    const { data: dbLogs, error: logsError } = await supabase
+      .from("customer_status_logs")
+      .select("id, customer_id, pppoe_username, status, event_time, telegram_chat_id, telegram_message_id, created_at")
+      .eq("customer_id", customer.id)
+      .order("event_time", { ascending: false })
+      .limit(20);
+
+    if (!logsError && dbLogs && dbLogs.length > 0) {
+      statusLogs = dbLogs.map((row) => ({
+        id: String(row.id),
+        customer_id: String(row.customer_id),
+        customer_name: customer.name,
+        pppoe_username: String(row.pppoe_username),
+        status: row.status as CustomerOnlineStatus,
+        event_time: String(row.event_time),
+        telegram_chat_id: (row.telegram_chat_id as number) || null,
+        telegram_message_id: (row.telegram_message_id as number) || null,
+        created_at: String(row.created_at || row.event_time),
+      }));
+    }
+  } catch (err) {
+    console.warn("Supabase customer_status_logs query fallback:", err);
+  }
+
+  if (statusLogs.length === 0) {
+    statusLogs = getStoredStatusLogs(customer.id, 20);
+  }
 
   // Fetch active subscribed fiber plan
-  const customerPlan = getCustomerPlan(customer.id, customer.pppoe_username);
+  const customerPlan = getCustomerPlan(customer.id, customer.pppoe_username, {
+    plan_id: customer.plan_id ?? undefined,
+    plan_name: customer.plan_name ?? undefined,
+    speed_mbps: customer.plan_speed_mbps ?? undefined,
+    upload_speed_mbps: customer.plan_upload_mbps ?? undefined,
+    price_inr: customer.plan_price_inr ?? undefined,
+    data_limit_gb: customer.plan_data_limit_gb ?? undefined,
+    renewal_date: customer.plan_renewal_date ?? undefined,
+  });
 
   const { isAdmin } = await verifyAdminAccess();
 

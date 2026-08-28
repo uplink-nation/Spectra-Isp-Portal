@@ -78,26 +78,33 @@ export function getCustomerPresence(
   dbOverride?: { is_online?: boolean; last_status_change_at?: string }
 ): PresenceEntry | null {
   const map = getPresenceMap();
-  if (customerId && map[customerId]) return map[customerId];
-  if (pppoeUsername) {
+  let existing: PresenceEntry | null = null;
+  if (customerId && map[customerId]) {
+    existing = map[customerId];
+  } else if (pppoeUsername) {
     const clean = pppoeUsername.toLowerCase().trim();
-    if (map[clean]) return map[clean];
-    const prefix = clean.split("@")[0].trim();
-    if (prefix && map[prefix]) return map[prefix];
+    if (map[clean]) {
+      existing = map[clean];
+    } else {
+      const prefix = clean.split("@")[0].trim();
+      if (prefix && map[prefix]) existing = map[prefix];
+    }
   }
 
   if (dbOverride && typeof dbOverride.is_online === "boolean") {
     return {
-      customer_id: customerId || "",
-      pppoe_username: pppoeUsername || "",
+      customer_id: customerId || existing?.customer_id || "",
+      pppoe_username: pppoeUsername || existing?.pppoe_username || "",
       is_online: dbOverride.is_online,
       status: dbOverride.is_online ? "ONLINE" : "OFFLINE",
-      last_status_change_at: dbOverride.last_status_change_at || new Date().toISOString(),
+      last_status_change_at: dbOverride.last_status_change_at || existing?.last_status_change_at || new Date().toISOString(),
+      telegram_chat_id: existing?.telegram_chat_id,
+      telegram_message_id: existing?.telegram_message_id,
       updated_at: new Date().toISOString(),
     };
   }
 
-  return null;
+  return existing;
 }
 
 /**

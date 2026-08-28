@@ -144,8 +144,12 @@ export function SupportClient({
   const effectivePlanSpeed = planSpeedMbps || customer.plan_speed_mbps || customer.plan?.speed_mbps || 300;
 
   // Real-time presence state
-  const isOnline = customerPresence ? customerPresence.is_online : true;
-  const lastStatusChange = customerPresence?.last_status_change_at;
+  const isOnline =
+    customerPresence !== undefined && customerPresence !== null
+      ? customerPresence.is_online
+      : (customer?.is_online ?? false);
+  const lastStatusChange =
+    customerPresence?.last_status_change_at || customer?.last_status_change_at;
 
   // Diagnostics live states
   const [isRunningDiagnostic, setIsRunningDiagnostic] = useState(false);
