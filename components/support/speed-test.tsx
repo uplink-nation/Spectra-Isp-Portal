@@ -91,6 +91,7 @@ export function SpeedTest({
   const [uploadSpeed, setUploadSpeed] = useState<number | null>(null);
   const [progress, setProgress] = useState<number>(0);
   const [testHistory, setTestHistory] = useState<SpeedTestResult[]>([]);
+  const [historyMonthFilter, setHistoryMonthFilter] = useState<string>("all");
   const [realtimeWave, setRealtimeWave] = useState<{ time: number; speed: number }[]>([]);
   const [trendViewMode, setTrendViewMode] = useState<"speed" | "latency">("speed");
   const [embeddedThirdParty, setEmbeddedThirdParty] = useState<"fast" | "cloudflare" | null>(null);
@@ -660,6 +661,40 @@ export function SpeedTest({
       planSpeedMbps,
     });
   };
+
+  const availableHistoryMonths = useMemo(() => {
+    const monthMap = new Map<string, string>();
+    testHistory.forEach((t) => {
+      if (!t.timestamp) return;
+      try {
+        const d = new Date(t.timestamp);
+        if (Number.isNaN(d.getTime())) return;
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+        if (!monthMap.has(key)) {
+          const label = d.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+          monthMap.set(key, label);
+        }
+      } catch {}
+    });
+    return Array.from(monthMap.entries())
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => b.key.localeCompare(a.key));
+  }, [testHistory]);
+
+  const filteredHistory = useMemo(() => {
+    if (historyMonthFilter === "all") return testHistory;
+    return testHistory.filter((t) => {
+      if (!t.timestamp) return false;
+      try {
+        const d = new Date(t.timestamp);
+        if (Number.isNaN(d.getTime())) return false;
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+        return key === historyMonthFilter;
+      } catch {
+        return false;
+      }
+    });
+  }, [testHistory, historyMonthFilter]);
 
   const trendData = useMemo(() => {
     return [...testHistory].reverse().map((item, index) => ({
@@ -1599,31 +1634,52 @@ export function SpeedTest({
 
       {/* 5. TEST LOG TABLE */}
       <div className="rounded-3xl border border-border/80 bg-card/85 p-6 backdrop-blur-xl shadow-xl spectra-glow space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Clock className="size-5 text-cyan-500" />
             <h3 className="font-bold text-base text-foreground">
               Recent Benchmark Log
             </h3>
             <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-mono font-bold text-muted-foreground">
-              {testHistory.length} Recorded
+              {filteredHistory.length} {historyMonthFilter !== "all" ? `of ${testHistory.length}` : "Recorded"}
             </span>
           </div>
 
-          {testHistory.length > 0 && (
-            <button
-              onClick={clearHistory}
-              className="text-xs font-semibold text-muted-foreground hover:text-rose-500 transition-colors flex items-center gap-1"
-            >
-              <Trash2 className="size-3.5" />
-              <span>Clear History</span>
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            {testHistory.length > 0 && availableHistoryMonths.length > 0 && (
+              <select
+                value={historyMonthFilter}
+                onChange={(e) => setHistoryMonthFilter(e.target.value)}
+                className="px-2.5 py-1.5 rounded-xl border border-border/80 bg-background/80 text-xs text-foreground focus:outline-none focus:border-cyan-500 shadow-sm"
+              >
+                <option value="all">All Months ({testHistory.length})</option>
+                {availableHistoryMonths.map((m) => (
+                  <option key={m.key} value={m.key}>
+                    {m.label}
+                  </option>
+                ))}
+              </select>
+            )}
+
+            {testHistory.length > 0 && (
+              <button
+                onClick={clearHistory}
+                className="text-xs font-semibold text-muted-foreground hover:text-rose-500 transition-colors flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-rose-500/10"
+              >
+                <Trash2 className="size-3.5" />
+                <span className="hidden sm:inline">Clear</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {testHistory.length === 0 ? (
           <div className="py-8 text-center text-xs text-muted-foreground border border-dashed border-border/60 rounded-2xl">
             No test records saved yet. Run your first speed test above to track performance.
+          </div>
+        ) : filteredHistory.length === 0 ? (
+          <div className="py-8 text-center text-xs text-muted-foreground border border-dashed border-border/60 rounded-2xl">
+            No test records found for the selected month.
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -1641,7 +1697,7 @@ export function SpeedTest({
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/40 font-mono">
-                {testHistory.map((item) => (
+                {filteredHistory.map((item) => (
                   <tr key={item.id} className="hover:bg-muted/20 transition-colors">
                     <td className="py-3 px-3 text-muted-foreground text-[11px]">
                       {new Date(item.timestamp).toLocaleDateString("en-IN", {

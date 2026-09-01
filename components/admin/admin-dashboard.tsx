@@ -43,6 +43,7 @@ import {
   Activity,
   Zap,
   BarChart3,
+  Calendar,
   Eye,
   Wifi,
   WifiOff,
@@ -103,10 +104,12 @@ export function AdminDashboard({
   const [speedTestSearch, setSpeedTestSearch] = useState("");
   const [speedTestGradeFilter, setSpeedTestGradeFilter] = useState<"all" | "A+" | "A" | "B" | "C">("all");
   const [speedTestCustomerFilter, setSpeedTestCustomerFilter] = useState<string>("all");
+  const [speedTestMonthFilter, setSpeedTestMonthFilter] = useState<string>("all");
 
   // Usage sessions filters & search
   const [usageSearch, setUsageSearch] = useState("");
   const [usageCustomerFilter, setUsageCustomerFilter] = useState<string>("all");
+  const [usageMonthFilter, setUsageMonthFilter] = useState<string>("all");
 
   // Invoices filters & search
   const [invoiceSearch, setInvoiceSearch] = useState("");
@@ -128,6 +131,8 @@ export function AdminDashboard({
   const [showCreateTicketModal, setShowCreateTicketModal] = useState(false);
   const [inspectSubscriber, setInspectSubscriber] = useState<DbCustomerWithStats | null>(null);
   const [inspectModalSubTab, setInspectModalSubTab] = useState<"speed" | "usage" | "invoices" | "tickets" | "presence">("speed");
+  const [inspectSpeedMonthFilter, setInspectSpeedMonthFilter] = useState<string>("all");
+  const [inspectUsageMonthFilter, setInspectUsageMonthFilter] = useState<string>("all");
 
   // Form states: Batch generator
   const [batchMonth, setBatchMonth] = useState("2026-09");
@@ -448,6 +453,55 @@ export function AdminDashboard({
     return `${minutes} min`;
   };
 
+  // Extract YYYY-MM helper
+  const getYearMonthKey = (ts: string | null | undefined): string => {
+    if (!ts) return "";
+    try {
+      const d = new Date(ts);
+      if (Number.isNaN(d.getTime())) return "";
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      return `${year}-${month}`;
+    } catch {
+      return "";
+    }
+  };
+
+  // Available distinct months for speed tests (descending)
+  const availableSpeedTestMonths = useMemo(() => {
+    const monthMap = new Map<string, string>();
+    speedTests.forEach((s) => {
+      if (!s.created_at) return;
+      const key = getYearMonthKey(s.created_at);
+      if (key && !monthMap.has(key)) {
+        const d = new Date(s.created_at);
+        const label = d.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+        monthMap.set(key, label);
+      }
+    });
+    return Array.from(monthMap.entries())
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => b.key.localeCompare(a.key));
+  }, [speedTests]);
+
+  // Available distinct months for usage sessions (descending)
+  const availableUsageMonths = useMemo(() => {
+    const monthMap = new Map<string, string>();
+    usageSessions.forEach((s) => {
+      const ts = s.session_ended_at || s.session_started_at;
+      if (!ts) return;
+      const key = getYearMonthKey(ts);
+      if (key && !monthMap.has(key)) {
+        const d = new Date(ts);
+        const label = d.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+        monthMap.set(key, label);
+      }
+    });
+    return Array.from(monthMap.entries())
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => b.key.localeCompare(a.key));
+  }, [usageSessions]);
+
   // Filtered subscribers
   const filteredCustomers = useMemo(() => {
     const query = subscriberSearch.toLowerCase().trim();
@@ -473,6 +527,9 @@ export function AdminDashboard({
       const matchCustomer =
         speedTestCustomerFilter === "all" || s.customer_id === speedTestCustomerFilter;
       const matchGrade = speedTestGradeFilter === "all" || s.grade === speedTestGradeFilter;
+      const matchMonth =
+        speedTestMonthFilter === "all" ||
+        (s.created_at && getYearMonthKey(s.created_at) === speedTestMonthFilter);
       const query = speedTestSearch.toLowerCase().trim();
       const matchQuery =
         !query ||
@@ -480,23 +537,27 @@ export function AdminDashboard({
         (s.customer_name && s.customer_name.toLowerCase().includes(query)) ||
         s.server_name.toLowerCase().includes(query) ||
         (s.client_ip && s.client_ip.toLowerCase().includes(query));
-      return matchCustomer && matchGrade && matchQuery;
+      return matchCustomer && matchGrade && matchMonth && matchQuery;
     });
-  }, [speedTests, speedTestCustomerFilter, speedTestGradeFilter, speedTestSearch]);
+  }, [speedTests, speedTestCustomerFilter, speedTestGradeFilter, speedTestMonthFilter, speedTestSearch]);
 
   // Filtered usage sessions
   const filteredUsageSessions = useMemo(() => {
     return usageSessions.filter((s) => {
       const matchCustomer =
         usageCustomerFilter === "all" || s.customer_id === usageCustomerFilter;
+      const ts = s.session_ended_at || s.session_started_at;
+      const matchMonth =
+        usageMonthFilter === "all" ||
+        (ts && getYearMonthKey(ts) === usageMonthFilter);
       const query = usageSearch.toLowerCase().trim();
       const matchQuery =
         !query ||
         s.pppoe_username.toLowerCase().includes(query) ||
         (s.customer_name && s.customer_name.toLowerCase().includes(query));
-      return matchCustomer && matchQuery;
+      return matchCustomer && matchMonth && matchQuery;
     });
-  }, [usageSessions, usageCustomerFilter, usageSearch]);
+  }, [usageSessions, usageCustomerFilter, usageMonthFilter, usageSearch]);
 
   // Filtered invoices
   const filteredInvoices = useMemo(() => {
@@ -1443,7 +1504,7 @@ export function AdminDashboard({
           </div>
 
           {/* Filters & Search */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
@@ -1466,6 +1527,20 @@ export function AdminDashboard({
               {customers.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name} ({c.pppoe_username})
+                </option>
+              ))}
+            </select>
+
+            {/* Month Filter */}
+            <select
+              value={speedTestMonthFilter}
+              onChange={(e) => setSpeedTestMonthFilter(e.target.value)}
+              className="px-3 py-2.5 rounded-xl border border-border/80 bg-card/80 text-xs text-foreground focus:outline-none focus:border-cyan-500"
+            >
+              <option value="all">All Months ({availableSpeedTestMonths.length || "All"})</option>
+              {availableSpeedTestMonths.map((m) => (
+                <option key={m.key} value={m.key}>
+                  {m.label}
                 </option>
               ))}
             </select>
@@ -1613,7 +1688,7 @@ export function AdminDashboard({
           </div>
 
           {/* Filters & Search */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
@@ -1636,6 +1711,20 @@ export function AdminDashboard({
               {customers.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name} ({c.pppoe_username})
+                </option>
+              ))}
+            </select>
+
+            {/* Month Filter */}
+            <select
+              value={usageMonthFilter}
+              onChange={(e) => setUsageMonthFilter(e.target.value)}
+              className="px-3 py-2.5 rounded-xl border border-border/80 bg-card/80 text-xs text-foreground focus:outline-none focus:border-cyan-500"
+            >
+              <option value="all">All Months ({availableUsageMonths.length || "All"})</option>
+              {availableUsageMonths.map((m) => (
+                <option key={m.key} value={m.key}>
+                  {m.label}
                 </option>
               ))}
             </select>
@@ -2285,138 +2374,233 @@ export function AdminDashboard({
             {/* Sub-tab 1: Speed Tests */}
             {inspectModalSubTab === "speed" && (
               <div className="space-y-3">
-                {speedTests.filter((s) => s.customer_id === inspectSubscriber.id).length === 0 ? (
-                  <p className="py-8 text-center text-xs text-muted-foreground">
-                    This subscriber has not performed any speed tests yet.
-                  </p>
-                ) : (
-                  <div className="overflow-x-auto rounded-xl border border-border/70">
-                    <table className="w-full text-left text-xs">
-                      <thead>
-                        <tr className="border-b border-border/60 bg-muted/40 text-[10px] uppercase tracking-wider text-muted-foreground font-bold font-mono">
-                          <th className="py-2.5 px-3">Date</th>
-                          <th className="py-2.5 px-3">Download</th>
-                          <th className="py-2.5 px-3">Upload</th>
-                          <th className="py-2.5 px-3">Ping</th>
-                          <th className="py-2.5 px-3">Jitter</th>
-                          <th className="py-2.5 px-3">Server / PoP</th>
-                          <th className="py-2.5 px-3">Grade</th>
-                          <th className="py-2.5 px-3 text-right">Share</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-border/40 font-mono text-xs">
-                        {speedTests
-                          .filter((s) => s.customer_id === inspectSubscriber.id)
-                          .map((st) => (
-                            <tr key={st.id} className="hover:bg-muted/20">
-                              <td className="py-2.5 px-3 text-muted-foreground font-sans">
-                                {new Date(st.created_at).toLocaleDateString("en-IN", {
-                                  month: "short",
-                                  day: "numeric",
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })}
-                              </td>
-                              <td className="py-2.5 px-3 font-bold text-cyan-500">
-                                {st.download_mbps} Mbps
-                              </td>
-                              <td className="py-2.5 px-3 font-bold text-emerald-500">
-                                {st.upload_mbps} Mbps
-                              </td>
-                              <td className="py-2.5 px-3 text-foreground">{st.ping_ms} ms</td>
-                              <td className="py-2.5 px-3 text-foreground">{st.jitter_ms} ms</td>
-                              <td className="py-2.5 px-3 font-sans text-muted-foreground">{st.server_name}</td>
-                              <td className="py-2.5 px-3">
-                                <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-bold text-emerald-500">
-                                  {st.grade}
-                                </span>
-                              </td>
-                              <td className="py-2.5 px-3 text-right font-sans">
-                                <div className="flex items-center justify-end gap-1.5">
-                                  <button
-                                    onClick={() => handleAdminShareSpeedTest(st)}
-                                    className="p-1 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
-                                    title="Share Report to NOC WhatsApp"
-                                  >
-                                    <MessageSquare className="size-3" />
-                                  </button>
-                                  <button
-                                    onClick={() => handleAdminDownloadSpeedTestPdf(st)}
-                                    className="p-1 rounded-lg border border-border/70 bg-background hover:bg-muted text-muted-foreground hover:text-foreground"
-                                    title="Download PDF"
-                                  >
-                                    <Download className="size-3" />
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                {(() => {
+                  const custSpeedTests = speedTests.filter((s) => s.customer_id === inspectSubscriber.id);
+                  const filteredCustSpeedTests = custSpeedTests.filter(
+                    (s) => inspectSpeedMonthFilter === "all" || getYearMonthKey(s.created_at) === inspectSpeedMonthFilter
+                  );
+                  const custSpeedMonths = Array.from(
+                    new Set(custSpeedTests.map((s) => getYearMonthKey(s.created_at)).filter(Boolean))
+                  ).sort().reverse();
+
+                  return (
+                    <>
+                      {custSpeedTests.length > 0 && (
+                        <div className="flex items-center justify-between gap-2 pb-1">
+                          <span className="text-xs text-muted-foreground font-medium">
+                            Showing {filteredCustSpeedTests.length} of {custSpeedTests.length} test records
+                          </span>
+                          <select
+                            value={inspectSpeedMonthFilter}
+                            onChange={(e) => setInspectSpeedMonthFilter(e.target.value)}
+                            className="px-2.5 py-1 rounded-lg border border-border/70 bg-card/80 text-xs text-foreground focus:outline-none focus:border-cyan-500"
+                          >
+                            <option value="all">All Months</option>
+                            {custSpeedMonths.map((mKey) => {
+                              const [y, m] = mKey.split("-");
+                              const d = new Date(Number(y), Number(m) - 1, 1);
+                              const label = d.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+                              return (
+                                <option key={mKey} value={mKey}>
+                                  {label}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      )}
+
+                      {filteredCustSpeedTests.length === 0 ? (
+                        <p className="py-8 text-center text-xs text-muted-foreground">
+                          {custSpeedTests.length === 0
+                            ? "This subscriber has not performed any speed tests yet."
+                            : "No speed tests recorded in the selected month."}
+                        </p>
+                      ) : (
+                        <div className="overflow-x-auto rounded-xl border border-border/70">
+                          <table className="w-full text-left text-xs">
+                            <thead>
+                              <tr className="border-b border-border/60 bg-muted/40 text-[10px] uppercase tracking-wider text-muted-foreground font-bold font-mono">
+                                <th className="py-2.5 px-3">Date</th>
+                                <th className="py-2.5 px-3">Download</th>
+                                <th className="py-2.5 px-3">Upload</th>
+                                <th className="py-2.5 px-3">Ping</th>
+                                <th className="py-2.5 px-3">Jitter</th>
+                                <th className="py-2.5 px-3">Server / PoP</th>
+                                <th className="py-2.5 px-3">Grade</th>
+                                <th className="py-2.5 px-3 text-right">Share</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-border/40 font-mono text-xs">
+                              {filteredCustSpeedTests.map((st) => (
+                                <tr key={st.id} className="hover:bg-muted/20">
+                                  <td className="py-2.5 px-3 text-muted-foreground font-sans">
+                                    {new Date(st.created_at).toLocaleDateString("en-IN", {
+                                      month: "short",
+                                      day: "numeric",
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
+                                  </td>
+                                  <td className="py-2.5 px-3 font-bold text-cyan-500">
+                                    {st.download_mbps} Mbps
+                                  </td>
+                                  <td className="py-2.5 px-3 font-bold text-emerald-500">
+                                    {st.upload_mbps} Mbps
+                                  </td>
+                                  <td className="py-2.5 px-3 text-foreground">{st.ping_ms} ms</td>
+                                  <td className="py-2.5 px-3 text-foreground">{st.jitter_ms} ms</td>
+                                  <td className="py-2.5 px-3 font-sans text-muted-foreground">{st.server_name}</td>
+                                  <td className="py-2.5 px-3">
+                                    <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-bold text-emerald-500">
+                                      {st.grade}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 px-3 text-right font-sans">
+                                    <div className="flex items-center justify-end gap-1.5">
+                                      <button
+                                        onClick={() => handleAdminShareSpeedTest(st)}
+                                        className="p-1 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
+                                        title="Share Report to NOC WhatsApp"
+                                      >
+                                        <MessageSquare className="size-3" />
+                                      </button>
+                                      <button
+                                        onClick={() => handleAdminDownloadSpeedTestPdf(st)}
+                                        className="p-1 rounded-lg border border-border/70 bg-background hover:bg-muted text-muted-foreground hover:text-foreground"
+                                        title="Download PDF"
+                                      >
+                                        <Download className="size-3" />
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             )}
 
             {/* Sub-tab 2: Usage Sessions */}
             {inspectModalSubTab === "usage" && (
               <div className="space-y-3">
-                {usageSessions.filter((s) => s.customer_id === inspectSubscriber.id).length === 0 ? (
-                  <p className="py-8 text-center text-xs text-muted-foreground">
-                    No active usage session records logged for this user.
-                  </p>
-                ) : (
-                  <div className="overflow-x-auto rounded-xl border border-border/70">
-                    <table className="w-full text-left text-xs">
-                      <thead>
-                        <tr className="border-b border-border/60 bg-muted/40 text-[10px] uppercase tracking-wider text-muted-foreground font-bold font-mono">
-                          <th className="py-2.5 px-3">Started</th>
-                          <th className="py-2.5 px-3">Ended</th>
-                          <th className="py-2.5 px-3">Duration</th>
-                          <th className="py-2.5 px-3">Download</th>
-                          <th className="py-2.5 px-3">Upload</th>
-                          <th className="py-2.5 px-3">Total Volume</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-border/40 font-mono text-xs">
-                        {usageSessions
-                          .filter((s) => s.customer_id === inspectSubscriber.id)
-                          .map((sess) => (
-                            <tr key={sess.id} className="hover:bg-muted/20">
-                              <td className="py-2.5 px-3 text-muted-foreground font-sans">
-                                {new Date(sess.session_started_at).toLocaleDateString("en-IN", {
-                                  month: "short",
-                                  day: "numeric",
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })}
-                              </td>
-                              <td className="py-2.5 px-3 text-muted-foreground font-sans">
-                                {sess.session_ended_at ? (
-                                  new Date(sess.session_ended_at).toLocaleDateString("en-IN", {
-                                    month: "short",
-                                    day: "numeric",
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })
-                                ) : (
-                                  <span className="text-emerald-500 font-bold">Active</span>
-                                )}
-                              </td>
-                              <td className="py-2.5 px-3 font-sans text-foreground">
-                                {formatDuration(sess.session_started_at, sess.session_ended_at)}
-                              </td>
-                              <td className="py-2.5 px-3 text-cyan-500">{formatBytes(sess.download_bytes)}</td>
-                              <td className="py-2.5 px-3 text-emerald-500">{formatBytes(sess.upload_bytes)}</td>
-                              <td className="py-2.5 px-3 font-bold text-foreground">
-                                {formatBytes(sess.total_bytes)}
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                {(() => {
+                  const custUsageSessions = usageSessions.filter((s) => s.customer_id === inspectSubscriber.id);
+                  const filteredCustUsageSessions = custUsageSessions.filter((s) => {
+                    const ts = s.session_ended_at || s.session_started_at;
+                    return inspectUsageMonthFilter === "all" || (ts && getYearMonthKey(ts) === inspectUsageMonthFilter);
+                  });
+                  const custUsageMonths = Array.from(
+                    new Set(
+                      custUsageSessions
+                        .map((s) => getYearMonthKey(s.session_ended_at || s.session_started_at))
+                        .filter(Boolean)
+                    )
+                  ).sort().reverse();
+
+                  const totalFilteredBytes = filteredCustUsageSessions.reduce((acc, s) => {
+                    const dl = Number(s.download_bytes) || 0;
+                    const ul = Number(s.upload_bytes) || 0;
+                    const tot = Number(s.total_bytes) || 0;
+                    return acc + (tot > 0 ? tot : dl + ul);
+                  }, 0);
+
+                  return (
+                    <>
+                      {custUsageSessions.length > 0 && (
+                        <div className="flex flex-wrap items-center justify-between gap-2 pb-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-muted-foreground font-medium">
+                              {filteredCustUsageSessions.length} sessions
+                            </span>
+                            <span className="text-[11px] font-mono font-bold text-cyan-500 bg-cyan-500/10 px-2 py-0.5 rounded-md">
+                              Total: {formatBytes(totalFilteredBytes)}
+                            </span>
+                          </div>
+                          <select
+                            value={inspectUsageMonthFilter}
+                            onChange={(e) => setInspectUsageMonthFilter(e.target.value)}
+                            className="px-2.5 py-1 rounded-lg border border-border/70 bg-card/80 text-xs text-foreground focus:outline-none focus:border-cyan-500"
+                          >
+                            <option value="all">All Months</option>
+                            {custUsageMonths.map((mKey) => {
+                              const [y, m] = mKey.split("-");
+                              const d = new Date(Number(y), Number(m) - 1, 1);
+                              const label = d.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+                              return (
+                                <option key={mKey} value={mKey}>
+                                  {label}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      )}
+
+                      {filteredCustUsageSessions.length === 0 ? (
+                        <p className="py-8 text-center text-xs text-muted-foreground">
+                          {custUsageSessions.length === 0
+                            ? "No active usage session records logged for this user."
+                            : "No usage sessions recorded in the selected month."}
+                        </p>
+                      ) : (
+                        <div className="overflow-x-auto rounded-xl border border-border/70">
+                          <table className="w-full text-left text-xs">
+                            <thead>
+                              <tr className="border-b border-border/60 bg-muted/40 text-[10px] uppercase tracking-wider text-muted-foreground font-bold font-mono">
+                                <th className="py-2.5 px-3">Started</th>
+                                <th className="py-2.5 px-3">Ended</th>
+                                <th className="py-2.5 px-3">Duration</th>
+                                <th className="py-2.5 px-3">Download</th>
+                                <th className="py-2.5 px-3">Upload</th>
+                                <th className="py-2.5 px-3">Total Volume</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-border/40 font-mono text-xs">
+                              {filteredCustUsageSessions.map((sess) => (
+                                <tr key={sess.id} className="hover:bg-muted/20">
+                                  <td className="py-2.5 px-3 text-muted-foreground font-sans">
+                                    {new Date(sess.session_started_at).toLocaleDateString("en-IN", {
+                                      month: "short",
+                                      day: "numeric",
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
+                                  </td>
+                                  <td className="py-2.5 px-3 text-muted-foreground font-sans">
+                                    {sess.session_ended_at ? (
+                                      new Date(sess.session_ended_at).toLocaleDateString("en-IN", {
+                                        month: "short",
+                                        day: "numeric",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                      })
+                                    ) : (
+                                      <span className="text-emerald-500 font-bold">Active</span>
+                                    )}
+                                  </td>
+                                  <td className="py-2.5 px-3 font-sans text-foreground">
+                                    {formatDuration(sess.session_started_at, sess.session_ended_at)}
+                                  </td>
+                                  <td className="py-2.5 px-3 text-cyan-500">{formatBytes(sess.download_bytes)}</td>
+                                  <td className="py-2.5 px-3 text-emerald-500">{formatBytes(sess.upload_bytes)}</td>
+                                  <td className="py-2.5 px-3 font-bold text-foreground">
+                                    {formatBytes(sess.total_bytes)}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             )}
 

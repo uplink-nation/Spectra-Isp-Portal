@@ -3,6 +3,7 @@ import { LogoutButton } from "@/components/logout-button";
 import { ExportPdfButton } from "@/components/export-pdf-button";
 import { SpectraLogo } from "@/components/spectra-logo";
 import { UsageCharts } from "@/components/usage-charts";
+import { SubscriberSessionLog } from "@/components/subscriber-session-log";
 import { PortalNav } from "@/components/portal-nav";
 import { verifyAdminAccess } from "@/lib/admin-auth";
 import { getCustomerPresence } from "@/lib/presence-store";
@@ -106,40 +107,6 @@ function formatBytes(bytes: number) {
     bytes /
     (1024 * 1024 * 1024)
   ).toFixed(2)} GB`;
-}
-
-
-// ==================================================
-// FORMAT DATE
-// ==================================================
-
-function formatDate(
-  date: string | null
-) {
-
-  if (!date) {
-    return "Active session";
-  }
-
-  const parsedDate =
-    new Date(date);
-
-  if (
-    Number.isNaN(
-      parsedDate.getTime()
-    )
-  ) {
-    return "Unknown date";
-  }
-
-  return parsedDate.toLocaleString(
-    "en-IN",
-    {
-      timeZone: "Asia/Kolkata",
-      dateStyle: "medium",
-      timeStyle: "short",
-    }
-  );
 }
 
 
@@ -872,236 +839,15 @@ export default async function Home() {
         </section>
 
 
-        {/* RECENT SESSIONS */}
-
-        <section className="mt-8 overflow-hidden rounded-2xl border border-border/80 bg-card/85 backdrop-blur-xl shadow-xl spectra-glow">
-
-
-          <div className="flex flex-col gap-3 border-b border-border/60 p-6 sm:flex-row sm:items-center sm:justify-between">
-
-            <div>
-
-              <h2 className="text-xl font-bold tracking-tight text-foreground">
-                Recent Sessions Log
-              </h2>
-
-              <p className="mt-1 text-sm text-muted-foreground">
-                Live PPPoE fiber session data synchronized from gateway
-              </p>
-
-            </div>
-
-            <div className="flex items-center gap-2">
-              <ExportPdfButton
-                customerName={customer.name}
-                pppoeUsername={customer.pppoe_username}
-                monthName={monthName}
-                downloadBytes={downloadBytes}
-                uploadBytes={uploadBytes}
-                totalBytes={totalBytes}
-                sessions={usageSessions}
-              />
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-background/60 px-3 py-1.5 text-xs font-semibold text-muted-foreground shadow-sm">
-                <ShieldCheck className="size-3.5 text-cyan-500" />
-                Live Sync
-              </span>
-            </div>
-
-          </div>
-
-
-          {usageSessions.length === 0 ? (
-
-            <div className="px-6 py-12 text-center text-muted-foreground">
-              <HardDrive className="mx-auto size-10 text-muted-foreground/50 mb-3" />
-              <p className="font-semibold">No usage sessions recorded</p>
-              <p className="text-xs text-muted-foreground mt-1">Sessions will appear automatically once data is logged.</p>
-            </div>
-
-          ) : (
-
-            <div>
-
-              {/* DESKTOP TABLE VIEW */}
-              <div className="hidden md:block overflow-x-auto">
-
-                <table className="w-full text-sm text-left">
-
-                  <thead className="border-b border-border/60 bg-muted/40 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-
-                    <tr>
-
-                      <th className="px-6 py-4">
-                        Session Date & Time
-                      </th>
-
-                      <th className="px-6 py-4 text-right">
-                        Download
-                      </th>
-
-                      <th className="px-6 py-4 text-right">
-                        Upload
-                      </th>
-
-                      <th className="px-6 py-4 text-right">
-                        Total Bandwidth
-                      </th>
-
-                    </tr>
-
-                  </thead>
-
-
-                  <tbody className="divide-y divide-border/50">
-
-                    {usageSessions.map(
-                      (
-                        session
-                      ) => {
-
-                        const download =
-                          toBytes(
-                            session.download_bytes
-                          );
-
-                        const upload =
-                          toBytes(
-                            session.upload_bytes
-                          );
-
-                        const storedTotal =
-                          toBytes(
-                            session.total_bytes
-                          );
-
-                        const total =
-                          storedTotal >
-                          0
-                            ? storedTotal
-                            : download +
-                              upload;
-
-
-                        return (
-
-                          <tr
-                            key={
-                              session.id
-                            }
-                            className="transition-colors hover:bg-cyan-500/5 group"
-                          >
-
-                            <td className="px-6 py-4 text-muted-foreground">
-
-                              <div className="flex items-center gap-2.5 font-medium text-foreground">
-                                <div className="size-2 rounded-full bg-cyan-500/60 group-hover:bg-cyan-400 group-hover:scale-125 transition-all" />
-                                {formatDate(
-                                  session.session_ended_at ??
-                                  session.session_started_at
-                                )}
-                              </div>
-
-                            </td>
-
-
-                            <td className="px-6 py-4 text-right font-medium text-muted-foreground">
-
-                              <span className="inline-flex items-center gap-1">
-                                <ArrowDownToLine className="size-3.5 text-blue-500" />
-                                {formatBytes(
-                                  download
-                                )}
-                              </span>
-
-                            </td>
-
-
-                            <td className="px-6 py-4 text-right font-medium text-muted-foreground">
-
-                              <span className="inline-flex items-center gap-1">
-                                <ArrowUpFromLine className="size-3.5 text-indigo-500" />
-                                {formatBytes(
-                                  upload
-                                )}
-                              </span>
-
-                            </td>
-
-
-                            <td className="px-6 py-4 text-right font-bold text-foreground">
-
-                              <span className="rounded-lg bg-background/80 px-2.5 py-1 border border-border/60 shadow-sm font-mono text-cyan-600 dark:text-cyan-400">
-                                {formatBytes(
-                                  total
-                                )}
-                              </span>
-
-                            </td>
-
-                          </tr>
-
-                        );
-
-                      }
-                    )}
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
-
-              {/* MOBILE CARD VIEW */}
-              <div className="block md:hidden divide-y divide-border/60">
-
-                {usageSessions.map((session) => {
-
-                  const download = toBytes(session.download_bytes);
-                  const upload = toBytes(session.upload_bytes);
-                  const storedTotal = toBytes(session.total_bytes);
-                  const total = storedTotal > 0 ? storedTotal : download + upload;
-
-                  return (
-                    <div key={session.id} className="p-4 space-y-3 hover:bg-cyan-500/5 transition-colors">
-                      <div className="flex items-center justify-between">
-                        <div className="text-xs font-semibold text-foreground flex items-center gap-2">
-                          <Clock className="size-3.5 text-cyan-500" />
-                          {formatDate(session.session_ended_at ?? session.session_started_at)}
-                        </div>
-                        <span className="rounded-md bg-cyan-500/10 px-2 py-0.5 text-xs font-bold font-mono text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
-                          {formatBytes(total)}
-                        </span>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground pt-1">
-                        <div className="flex items-center gap-1.5 rounded-lg bg-background/50 p-2 border border-border/50">
-                          <ArrowDownToLine className="size-3.5 text-blue-500" />
-                          <div>
-                            <p className="text-[10px] uppercase font-bold text-muted-foreground">DL</p>
-                            <p className="font-semibold text-foreground">{formatBytes(download)}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-1.5 rounded-lg bg-background/50 p-2 border border-border/50">
-                          <ArrowUpFromLine className="size-3.5 text-indigo-500" />
-                          <div>
-                            <p className="text-[10px] uppercase font-bold text-muted-foreground">UL</p>
-                            <p className="font-semibold text-foreground">{formatBytes(upload)}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-
-              </div>
-
-            </div>
-
-          )}
-
-        </section>
+        {/* RECENT SESSIONS WITH MONTH-WISE FILTER */}
+        <div className="mt-8">
+          <SubscriberSessionLog
+            sessions={usageSessions}
+            customerName={customer.name}
+            pppoeUsername={customer.pppoe_username}
+            defaultMonthName={monthName}
+          />
+        </div>
 
       </main>
 

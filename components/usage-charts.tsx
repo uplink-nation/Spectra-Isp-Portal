@@ -58,9 +58,57 @@ function formatGB(bytes: number) {
   return (bytes / (1024 * 1024 * 1024)).toFixed(2);
 }
 
+const SHORT_MONTH_NAMES = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+const FULL_MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
 export function UsageCharts({ sessions, monthName }: UsageChartsProps) {
   const [viewMode, setViewMode] = useState<"bar" | "area" | "pie">("bar");
-  const [filterPeriod, setFilterPeriod] = useState<"month" | "all">("month");
+
+  // Helper to extract YYYY-MM
+  const getYearMonthKey = (ts: string | null | undefined): string => {
+    if (!ts) return "";
+    try {
+      const d = new Date(ts);
+      if (Number.isNaN(d.getTime())) return "";
+      const utc = d.getTime() + d.getTimezoneOffset() * 60000;
+      const istDate = new Date(utc + 5.5 * 3600000);
+      const y = istDate.getFullYear();
+      const m = String(istDate.getMonth() + 1).padStart(2, "0");
+      return `${y}-${m}`;
+    } catch {
+      return "";
+    }
+  };
+
+  // Extract available distinct months from sessions
+  const availableMonths = useMemo(() => {
+    const map = new Map<string, string>();
+    sessions.forEach((s) => {
+      const ts = s.session_ended_at ?? s.session_started_at;
+      if (!ts) return;
+      const key = getYearMonthKey(ts);
+      if (key && !map.has(key)) {
+        const [yStr, mStr] = key.split("-");
+        const monthIndex = Number(mStr) - 1;
+        const label = `${FULL_MONTH_NAMES[monthIndex] || "Month"} ${yStr}`;
+        map.set(key, label);
+      }
+    });
+    return Array.from(map.entries())
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => b.key.localeCompare(a.key));
+  }, [sessions]);
+
+  const [selectedMonth, setSelectedMonth] = useState<string>(() => {
+    return availableMonths[0]?.key || "all";
+  });
 
   // Filter and group sessions by day
   const { dailyData, pieData, metrics } = useMemo(() => {
@@ -81,27 +129,12 @@ export function UsageCharts({ sessions, monthName }: UsageChartsProps) {
       };
     }
 
-    const now = new Date();
-    const currentYear = Number(
-      new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", year: "numeric" }).format(now)
-    );
-    const currentMonth = Number(
-      new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", month: "numeric" }).format(now)
-    );
-
-    // Filter sessions based on filterPeriod
+    // Filter sessions based on selectedMonth
     const filteredSessions = sessions.filter((session) => {
-      if (filterPeriod === "all") return true;
-      if (!session.session_ended_at) return false;
-      const d = new Date(session.session_ended_at);
-      const parts = new Intl.DateTimeFormat("en-IN", {
-        timeZone: "Asia/Kolkata",
-        year: "numeric",
-        month: "numeric",
-      }).formatToParts(d);
-      const year = Number(parts.find((p) => p.type === "year")?.value);
-      const month = Number(parts.find((p) => p.type === "month")?.value);
-      return year === currentYear && month === currentMonth;
+      if (selectedMonth === "all") return true;
+      const ts = session.session_ended_at ?? session.session_started_at;
+      if (!ts) return false;
+      return getYearMonthKey(ts) === selectedMonth;
     });
 
     // Group by date string (YYYY-MM-DD)
@@ -111,8 +144,11 @@ export function UsageCharts({ sessions, monthName }: UsageChartsProps) {
       const dateVal = session.session_ended_at ?? session.session_started_at;
       if (!dateVal) return;
       const dateObj = new Date(dateVal);
-      const key = dateObj.toISOString().split("T")[0];
-      const label = dateObj.toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", month: "short", day: "numeric" });
+      if (Number.isNaN(dateObj.getTime())) return;
+      const utc = dateObj.getTime() + dateObj.getTimezoneOffset() * 60000;
+      const istDate = new Date(utc + 5.5 * 3600000);
+      const key = `${istDate.getFullYear()}-${String(istDate.getMonth() + 1).padStart(2, "0")}-${String(istDate.getDate()).padStart(2, "0")}`;
+      const label = `${SHORT_MONTH_NAMES[istDate.getMonth()]} ${istDate.getDate()}`;
 
       const dl = toBytes(session.download_bytes);
       const ul = toBytes(session.upload_bytes);
@@ -194,7 +230,7 @@ export function UsageCharts({ sessions, monthName }: UsageChartsProps) {
         projectedMonthlyGB,
       },
     };
-  }, [sessions, filterPeriod]);
+  }, [sessions, selectedMonth]);
 
   interface CustomTooltipProps {
     active?: boolean;
@@ -340,31 +376,33 @@ export function UsageCharts({ sessions, monthName }: UsageChartsProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* Period Filter */}
-            <div className="inline-flex rounded-xl border border-border/80 bg-background/60 p-1 shadow-sm">
-              <button
-                onClick={() => setFilterPeriod("month")}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all",
-                  filterPeriod === "month"
-                    ? "bg-cyan-500 text-white shadow-md shadow-cyan-500/20"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {monthName}
-              </button>
-              <button
-                onClick={() => setFilterPeriod("all")}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all",
-                  filterPeriod === "all"
-                    ? "bg-cyan-500 text-white shadow-md shadow-cyan-500/20"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                All History
-              </button>
-            </div>
+            {/* Month Filter */}
+            {availableMonths.length > 0 ? (
+              <div className="inline-flex items-center gap-1.5 rounded-xl border border-border/80 bg-background/60 px-2 py-1 shadow-sm">
+                <Calendar className="size-3.5 text-cyan-500 shrink-0" />
+                <select
+                  value={selectedMonth}
+                  onChange={(e) => setSelectedMonth(e.target.value)}
+                  className="bg-transparent text-xs font-semibold text-foreground focus:outline-none pr-1 py-0.5 cursor-pointer"
+                >
+                  <option value="all" className="bg-card text-foreground">All History</option>
+                  {availableMonths.map((m) => (
+                    <option key={m.key} value={m.key} className="bg-card text-foreground">
+                      {m.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <div className="inline-flex rounded-xl border border-border/80 bg-background/60 p-1 shadow-sm">
+                <button
+                  onClick={() => setSelectedMonth("all")}
+                  className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-cyan-500 text-white shadow-md shadow-cyan-500/20"
+                >
+                  {monthName}
+                </button>
+              </div>
+            )}
 
             {/* View Mode Toggle */}
             <div className="inline-flex rounded-xl border border-border/80 bg-background/60 p-1 shadow-sm">
